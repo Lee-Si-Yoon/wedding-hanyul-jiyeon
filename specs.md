@@ -96,10 +96,10 @@
 Use Next.js server actions as the primary API approach (no REST routes)
 
 - create a rsvp
-- delete a rsvp
+- - delete a rsvp (soft delete: set deleted_at to now)
 - update a ui_flag
-- get list of rsvp
-- get a rsvp
+- get list of rsvp (exclude where deleted_at is not null)
+- get a rsvp (exclude where deleted_at is not null)
 
 ## Database Objects
 
@@ -110,6 +110,7 @@ Use Next.js server actions as the primary API approach (no REST routes)
 - password: string (bcrypt hashed)
 - created_at: Datetime
 - updated_at: Datetime
+- deleted_at: Datetime (nullable, null = active)
 
 ### ui_flags
 
@@ -127,6 +128,7 @@ Use Next.js server actions as the primary API approach (no REST routes)
 - meal: "yes" | "no" | "undecided"
 - count: integer (total guests including respondent, min=1)
 - created_at: Datetime
+- deleted_at: Datetime (nullable, null = active)
 
 ## TBD
 
