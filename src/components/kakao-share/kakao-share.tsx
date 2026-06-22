@@ -16,27 +16,30 @@ declare global {
   }
 }
 
+interface LinkObject {
+  webUrl: string;
+  mobileWebUrl: string;
+}
+
 interface KakaoShareSettings {
   objectType: string;
   content: {
     title: string;
     description: string;
     imageUrl: string;
-    link: {
-      webUrl: string;
-      mobileWebUrl: string;
-    };
+    link: LinkObject;
   };
-  buttons: {
+  address: string;
+  addressTitle?: string;
+  buttonTitle?: string;
+  buttons?: {
     title: string;
-    link: {
-      webUrl: string;
-      mobileWebUrl: string;
-    };
+    link: LinkObject;
   }[];
 }
 
 const JS_KEY = process.env.NEXT_PUBLIC_KAKAO_JS_KEY;
+const URL = 'https://wedding-hanyul-jiyeon.vercel.app';
 
 export default function KakaoShare() {
   const [ready, setReady] = useState(false);
@@ -52,31 +55,24 @@ export default function KakaoShare() {
   function handleShare() {
     if (!window.Kakao?.Share) return;
 
-    const url = window.location.origin;
-
     window.Kakao.Share.sendDefault({
-      objectType: 'feed',
+      objectType: 'location',
       content: {
         title: '결혼식에 초대합니다',
         description:
           'ㅁㅁㅁ과 ㅁㅁㅁ의 결혼식에 초대합니다. 함께 축하해주세요!',
-        imageUrl: `${url}/gallery-example-1.png`,
+        imageUrl: `${URL}/gallery-example-1.png`,
         link: {
-          webUrl: url,
-          mobileWebUrl: url,
+          webUrl: URL,
+          mobileWebUrl: URL,
         },
       },
+      address: '경기도 성남시 수정구 시흥동 63-5',
+      addressTitle: '메종디탈리',
       buttons: [
         {
-          title: '청첩장 보기',
-          link: { webUrl: url, mobileWebUrl: url },
-        },
-        {
-          title: '길 찾기',
-          link: {
-            webUrl: 'https://map.naver.com/p/entry/place/1950859773',
-            mobileWebUrl: 'https://map.naver.com/p/entry/place/1950859773',
-          },
+          title: '초대장 보기',
+          link: { webUrl: URL, mobileWebUrl: URL },
         },
       ],
     });
