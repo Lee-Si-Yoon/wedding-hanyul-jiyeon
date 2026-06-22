@@ -101,50 +101,22 @@ Use Next.js server actions as the primary API approach (no REST routes)
 
 **Public:**
 
-- createRSVP({ side, name, meal, count }) → insert rsvp row
-  - all fields required, count >= 1, no max length for name
-- getUiFlag({ name }) → returns { enabled, updatedAt } or null
+- createRSVP
+- getUiFlag
 
 **Admin-only (guard: getServerSession() check, redirect if no session):**
 
-- deleteRSVP({ id }) → soft delete (set deleted_at = now)
-- updateUiFlag({ name, enabled }) → flip enabled, update updated_at
-- getRSVPList() → returns rows where deleted_at is null
-- getRSVPSummary() → returns { total, mealYes, mealUndecided, sideGroom, sideBride, lastUpdatedAt }
+- deleteRSVP
+- updateUiFlag
+- getRSVPList
+- getRSVPSummary
 
 **Auth (handled by NextAuth, not custom actions):**
 
-- signIn → via signIn("credentials", { username, password }) from next-auth/react
+- signIn → via signIn("credentials") from next-auth/react
 - signOut → via signOut() from next-auth/react
 
-## Database Objects
-
-### admin_credentials
-
-- id: integer
-- username: string
-- password: string (bcrypt hashed)
-- created_at: Datetime
-- updated_at: Datetime
-- deleted_at: Datetime (nullable, null = active)
-
-### ui_flags
-
-- id: integer
-- name: string (e.g. "rsvp")
-- enabled: boolean
-- created_at: Datetime
-- updated_at: Datetime
-
-### rsvp
-
-- id: integer
-- side: "groom" | "bride"
-- name: string
-- meal: "yes" | "no" | "undecided"
-- count: integer (total guests including respondent, min=1)
-- created_at: Datetime
-- deleted_at: Datetime (nullable, null = active)
+→ See [Database Objects & Queries](./src/db/SPEC.md) for schemas and query details
 
 ## TBD
 
