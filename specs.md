@@ -6,9 +6,13 @@
 ## Software Stacks
 
 - pnpm
-- Next.js app
+- nextjs
 - Tailwindcss
 - Shadcn/ui
+- nextauth
+- navermaps
+- kakao sdk
+- neondb
 
 ## Routes
 
@@ -31,7 +35,7 @@
 - locates at `/`
 - Uses https://ui.shadcn.com/docs/components/radix/carousel to render carousel
 - Autoplay enabled, next image at every 2s
-- When clicked each image, zooms to fullscreen
+- When clicked each image, open up as fullscreen
 - Has "사진 전체보기" button which shows overview of playlist images within modal
 
 #### Bank account number viewer
@@ -66,19 +70,31 @@
   - total number of side = groom and side = bride
   - last_updated_at: Datetime of lastly added rsvp object
 
+## Backend Components
+
+#### Auth
+
+- Use https://next-auth.js.org/configuration/providers/credentials
+- only username and passwords are allowed
+- username and password saved at database as admin_credentials
+
 ## Database Objects
 
 ## admin_credentials
 
 - id: integer
-- email: string(Email)
+- username: string
 - password: string
 - created_at: Datetime
+- updated_at: Datetime
 
-### ui_rsvp
+### ui_flags
 
+- id: integer
+- name: string
 - enabled: boolean
-- last_updated_at: Datetime
+- created_at: Datetime
+- updated_at: Datetime
 
 ### rsvp
 
@@ -88,10 +104,11 @@
 - meal: "yes" | "no" | "undecided"
 - count: integer
 - created_at: Datetime
+- updated_at: Datetime
 
-<!-- IGNORE AFTER -->
+<!-- BEGIN:Ignore from spec -->
 
 ## Refs
 
 - https://github.com/juhonamnam/wedding-invitation
-<!-- -->
+<!-- AFTER:Ignore from spec -->
