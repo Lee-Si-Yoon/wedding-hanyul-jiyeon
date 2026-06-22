@@ -34,6 +34,11 @@
 - When clicked each image, zooms to fullscreen
 - Has "사진 전체보기" button which shows overview of playlist images within modal
 
+#### Bank account number viewer
+
+- locates at `/`
+- A button opens up a modal that has bank account number and click to copy to clipboard function
+
 #### RSVP - form
 
 - located at `/`
