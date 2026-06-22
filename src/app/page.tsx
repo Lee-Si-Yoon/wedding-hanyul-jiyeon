@@ -4,6 +4,7 @@ import RsvpForm from '@/components/rsvp-form/rsvp-form';
 import BankAccounts, {
   type BankAccount,
 } from '@/components/bank-accounts/bank-accounts';
+import KakaoShare from '@/components/kakao-share/kakao-share';
 
 const GALLERY_IMAGES = [
   '/gallery-example-1.png',
@@ -54,6 +55,7 @@ export default async function Home() {
         <h2>참석여부 전달하기</h2>
         <RsvpForm enabled={enabled} />
       </div>
+      <KakaoShare />
     </div>
   );
 }

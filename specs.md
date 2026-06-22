@@ -29,10 +29,7 @@
 
 #### Share by Kakao Button
 
-- located at `/`
-- Uses https://developers.kakao.com/sdk/reference/js/release/Kakao.Share.html#.sendDefault
-- shares wedding information
-- Template fields (title, description, image, buttons): TBD (placeholder)
+→ See [Kakao Share Spec](./src/components/kakao-share/SPEC.md)
 
 #### RSVP - toggle
 
