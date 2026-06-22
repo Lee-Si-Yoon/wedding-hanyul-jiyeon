@@ -86,20 +86,36 @@
 
 #### Auth
 
-- Use https://next-auth.js.org/configuration/providers/credentials
-- only username and passwords are allowed
-- username and password saved at database as admin_credentials
-- Passwords are hashed with bcrypt before storing (never plaintext)
+- Use NextAuth.js v4 (next-auth, stable)
+- Credentials provider only
+- authorize callback: query admin_credentials by username where deleted_at is null, bcrypt compare password, return user or null
+- JWT session strategy (required by Credentials provider)
+- NEXTAUTH_SECRET env var required (encrypts JWT, signs cookies/CSRF tokens)
+- Route Handler at app/api/auth/[...nextauth]/route.ts
+- Default sign-in page at /api/auth/signin
+- No middleware — session check in admin server actions and layout via getServerSession()
 
 #### Server Actions
 
 Use Next.js server actions as the primary API approach (no REST routes)
 
-- create a rsvp
-- - delete a rsvp (soft delete: set deleted_at to now)
-- update a ui_flag
-- get list of rsvp (exclude where deleted_at is not null)
-- get a rsvp (exclude where deleted_at is not null)
+**Public:**
+
+- createRSVP({ side, name, meal, count }) → insert rsvp row
+  - all fields required, count >= 1, no max length for name
+- getUiFlag({ name }) → returns { enabled, updatedAt } or null
+
+**Admin-only (guard: getServerSession() check, redirect if no session):**
+
+- deleteRSVP({ id }) → soft delete (set deleted_at = now)
+- updateUiFlag({ name, enabled }) → flip enabled, update updated_at
+- getRSVPList() → returns rows where deleted_at is null
+- getRSVPSummary() → returns { total, mealYes, mealUndecided, sideGroom, sideBride, lastUpdatedAt }
+
+**Auth (handled by NextAuth, not custom actions):**
+
+- signIn → via signIn("credentials", { username, password }) from next-auth/react
+- signOut → via signOut() from next-auth/react
 
 ## Database Objects
 
@@ -135,6 +151,7 @@ Use Next.js server actions as the primary API approach (no REST routes)
 - Wedding details (date, time, venue name, address, greeting message)
 - Naver Map lat/lng coordinates and place IDs
 - Kakao Share template fields
+- NEXTAUTH_SECRET value (generate with `openssl rand -base64 32`)
 
 <!-- BEGIN:Ignore from spec -->
 
