@@ -17,12 +17,7 @@
 
 #### Gallery
 
-- locates at `/`
-- Uses https://ui.shadcn.com/docs/components/radix/carousel to render carousel
-- Autoplay enabled, next image at every 2s
-- When clicked each image, open up as fullscreen using shadcn carousel
-- Has "사진 전체보기" button which shows overview of playlist images within modal
-- Images are stored in the `public/` directory
+→ See [Gallery Spec](./src/components/gallery/SPEC.md)
 
 #### Bank account number viewer
 
