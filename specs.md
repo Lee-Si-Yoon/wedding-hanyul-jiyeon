@@ -1,20 +1,3 @@
-## Use skills
-
-- caveman
-- ponytail
-
-## Software Stacks
-
-- pnpm
-- nextjs
-- Tailwindcss
-- Shadcn/ui
-- nextauth
-- navermaps
-- kakao sdk
-- neondb
-- drizzle orm
-
 ## Routes
 
 - `/`: index (public)
@@ -53,34 +36,22 @@
 
 #### RSVP - form
 
-- located at `/`
-- Creates rsvp row when user submits the form
-- Uses Next.js server actions
-- `count` field = total accompanying guests including the respondent (min=1, no max)
+→ See [RSVP Form Spec](./src/components/rsvp-form/SPEC.md)
 
 #### Share by Kakao Button
 
+- located at `/`
 - Uses https://developers.kakao.com/sdk/reference/js/release/Kakao.Share.html#.sendDefault
-- Shares wedding information
+- shares wedding information
 - Template fields (title, description, image, buttons): TBD (placeholder)
 
 #### RSVP - toggle
 
-- located at `/admin`
-- Toggles RSVP form component by flipping `enabled` on the `ui_flags` row where `name = "rsvp"`, also updates `updated_at`
-- If enabled, shows RSVP form. If disabled, hides RSVP form.
-- Renders last_updated_at together
+→ See [RSVP Toggle Spec](./src/components/rsvp-toggle/SPEC.md)
 
 #### RSVP - list
 
-- located at `/admin`
-- Table view of rsvp
-- Renders summary
-  - total count of rsvp
-  - total number of meal = yes
-  - total number of meal = undecided
-  - total number of side = groom and side = bride
-  - last_updated_at: Datetime of lastly added rsvp object
+→ See [RSVP List Spec](./src/components/rsvp-list/SPEC.md)
 
 ## Backend Components
 
