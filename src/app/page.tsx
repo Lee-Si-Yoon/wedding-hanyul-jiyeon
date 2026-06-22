@@ -5,6 +5,7 @@ import BankAccounts, {
   type BankAccount,
 } from '@/components/bank-accounts/bank-accounts';
 import KakaoShare from '@/components/kakao-share/kakao-share';
+import Map from '@/components/map/map';
 
 const GALLERY_IMAGES = [
   '/gallery-example-1.png',
@@ -41,6 +42,10 @@ export default async function Home() {
       <div>
         <h2>사진첩</h2>
         <Gallery images={GALLERY_IMAGES} />
+      </div>
+      <div>
+        <h2>오시는 길</h2>
+        <Map />
       </div>
       <div>
         <h2>마음 전하기</h2>

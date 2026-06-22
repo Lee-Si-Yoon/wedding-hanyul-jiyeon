@@ -7,13 +7,7 @@
 
 #### Map
 
-- locates at `/`
-- Uses https://navermaps.github.io/maps.js.ncp/ to render map
-- Has 1 marker to locate the wedding hall, positioned by latitude/longitude coordinates (not place ID)
-- Has share buttons with redirects user to the location of the wedding hall
-  - https://map.naver.com/p/entry/place/{id}
-  - https://map.kakao.com/?itemId={id}
-- Note: place IDs are only for share link URLs, not used by the maps JS API for rendering
+→ See [Map Spec](./src/components/map/SPEC.md)
 
 #### Gallery
 
