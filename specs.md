@@ -17,8 +17,18 @@
 
 ## Routes
 
-- `/`: index
-- `/admin`: admin page, requires auth
+- `/`: index (public)
+- `/admin`: admin page (auth required)
+  - Unauthenticated → server-side redirect to `/api/auth/signin?callbackUrl=/admin`
+  - Auth check in admin layout via getServerSession()
+  - After login → redirect to `/admin` (callbackUrl)
+  - After signOut → redirect to `/api/auth/signin`
+
+## Layout
+
+- Root layout (`app/layout.tsx`): shared across all routes
+- Admin layout (`app/admin/layout.tsx`): wraps `/admin`, calls getServerSession(), redirects if no session
+- `<SessionProvider>` only in admin layout tree
 
 ## Frontend Components
 
@@ -94,6 +104,8 @@
 - Route Handler at app/api/auth/[...nextauth]/route.ts
 - Default sign-in page at /api/auth/signin
 - No middleware — session check in admin server actions and layout via getServerSession()
+- callbackUrl: /admin (passed to signIn for post-login redirect)
+- signOut redirect: /api/auth/signin (via redirectTo option)
 
 #### Server Actions
 
