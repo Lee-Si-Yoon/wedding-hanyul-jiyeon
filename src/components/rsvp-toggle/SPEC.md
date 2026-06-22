@@ -1,23 +1,19 @@
 ## RSVP Toggle
 
-- located at `/admin`
-- Toggles RSVP form component by flipping `enabled` on the `ui_flags` row where `name = "rsvp"`, also updates `updated_at`
-- If enabled, shows RSVP form. If disabled, hides RSVP form (submit button disabled)
-- Renders last_updated_at together
+- Location: `/admin`, toggles `ui_flags.enabled` where `name="rsvp"`, updates `updated_at`
 
 ### Props
 
-- `enabled: boolean` — current state from `getUiFlag("rsvp")`
-- `updatedAt: string | null` — last updated timestamp (pre-formatted server-side with `timeZone: 'Asia/Seoul'` to avoid hydration mismatch)
+- `enabled: boolean` — from `getUiFlag("rsvp")`
+- `updatedAt: string | null` — pre-formatted server-side (`timeZone: 'Asia/Seoul'`)
 
 ### UI
 
-- shadcn Switch component
-- Label: "RSVP 활성화" / "RSVP 비활성화"
-- On toggle: calls `updateUiFlagAction("rsvp", value)` server action
-- Renders: "업데이트: {updatedAt}" formatted as Korean locale
+- shadcn Switch, label "RSVP 활성화" / "RSVP 비활성화"
+- Toggle → `updateUiFlagAction("rsvp", value)`
+- Renders "업데이트: {updatedAt}"
 
 ### Behavior
 
-- Optimistic update: UI toggles immediately, reverts on error
-- Pending state: switch disabled while action in flight
+- Optimistic update, revert on error
+- Switch disabled while action in flight

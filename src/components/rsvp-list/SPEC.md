@@ -1,33 +1,22 @@
 ## RSVP List
 
-- located at `/admin`
-- Table view of rsvp
-- Renders summary card above table
+- Location: `/admin`, table + summary card
 
 ### Summary
 
 - 총 참석자: total count
-- 식사: total number of meal = yes
-- 미정: total number of meal = undecided
-- 신랑측: total number of side = groom / 신부측: total number of side = bride
-- 마지막 업데이트: last_updated_at formatted as Korean locale
+- 식사 / 미정 / 신랑측 / 신부측 counts
+- 마지막 업데이트: last_updated_at (Korean locale)
 
-### Table columns
+### Table
 
-- 이름 (name)
-- 측 (side): 신랑측 / 신부측
-- 식사 (meal): 식사함 / 안함 / 미정
-- 인원 (count)
-- 등록일 (createdAt): Korean locale date
-- 삭제: delete button per row
+- 이름, 측 (신랑측/신부측), 식사 (식사함/안함/미정), 인원, 등록일, 삭제
 
 ### Props
 
-- `list: (SelectRsvp & { createdAtFormatted: string })[]` — from `getRSVPList()` (excludes soft-deleted), dates pre-formatted server-side with `timeZone: 'Asia/Seoul'`
-- `summary: { total, mealYes, mealUndecided, sideGroom, sideBride, lastUpdatedAt: string | null }` — from `getRSVPSummary()`, `lastUpdatedAt` pre-formatted server-side`
+- `list: (SelectRsvp & { createdAtFormatted: string })[]` — `getRSVPList()`, dates pre-formatted (`timeZone: 'Asia/Seoul'`)
+- `summary: { total, mealYes, mealUndecided, sideGroom, sideBride, lastUpdatedAt: string | null }` — `getRSVPSummary()`
 
 ### Delete
 
-- Delete button per row (shadcn Button, variant="destructive")
-- Confirmation: `confirm("정말 삭제하시겠습니까?")`
-- On confirm: calls `deleteRSVPAction(id)` server action (soft delete)
+- Button per row (destructive), `confirm("정말 삭제하시겠습니까?")`, `deleteRSVPAction(id)` (soft delete)
