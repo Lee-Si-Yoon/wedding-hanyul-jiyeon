@@ -18,17 +18,7 @@
 ## Routes
 
 - `/`: index (public)
-- `/admin`: admin page (auth required)
-  - Unauthenticated → server-side redirect to `/api/auth/signin?callbackUrl=/admin`
-  - Auth check in admin layout via getServerSession()
-  - After login → redirect to `/admin` (callbackUrl)
-  - After signOut → redirect to `/api/auth/signin`
-
-## Layout
-
-- Root layout (`app/layout.tsx`): shared across all routes
-- Admin layout (`app/admin/layout.tsx`): wraps `/admin`, calls getServerSession(), redirects if no session
-- `<SessionProvider>` only in admin layout tree
+- `/admin`: admin page (auth required) → See [Auth Spec](./src/app/api/auth/SPEC.md)
 
 ## Frontend Components
 
@@ -96,16 +86,7 @@
 
 #### Auth
 
-- Use NextAuth.js v4 (next-auth, stable)
-- Credentials provider only
-- authorize callback: query admin_credentials by username where deleted_at is null, bcrypt compare password, return user or null
-- JWT session strategy (required by Credentials provider)
-- NEXTAUTH_SECRET env var required (encrypts JWT, signs cookies/CSRF tokens)
-- Route Handler at app/api/auth/[...nextauth]/route.ts
-- Default sign-in page at /api/auth/signin
-- No middleware — session check in admin server actions and layout via getServerSession()
-- callbackUrl: /admin (passed to signIn for post-login redirect)
-- signOut redirect: /api/auth/signin (via redirectTo option)
+→ See [Auth Spec](./src/app/api/auth/SPEC.md)
 
 #### Server Actions
 
@@ -123,10 +104,7 @@ Use Next.js server actions as the primary API approach (no REST routes)
 - getRSVPList
 - getRSVPSummary
 
-**Auth (handled by NextAuth, not custom actions):**
-
-- signIn → via signIn("credentials") from next-auth/react
-- signOut → via signOut() from next-auth/react
+**Auth:** → See [Auth Spec](./src/app/api/auth/SPEC.md)
 
 → See [Database Objects & Queries](./src/db/SPEC.md) for schemas and query details
 
@@ -135,7 +113,6 @@ Use Next.js server actions as the primary API approach (no REST routes)
 - Wedding details (date, time, venue name, address, greeting message)
 - Naver Map lat/lng coordinates and place IDs
 - Kakao Share template fields
-- NEXTAUTH_SECRET value (generate with `openssl rand -base64 32`)
 
 <!-- BEGIN:Ignore from spec -->
 
