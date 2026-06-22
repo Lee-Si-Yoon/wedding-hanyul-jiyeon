@@ -17,7 +17,7 @@
 - Container: `<div ref={ref}>` with full width, fixed height
 - `new naver.maps.Map(ref.current, { center, zoom: 18 })`
 - Marker: `new naver.maps.Marker({ position, map })`
-- InfoWindow (always open): label "메종디탈리", `borderWidth: 0`, `disableAnchor: true`
+- InfoWindow (always open): label from `placeName` prop, `borderWidth: 0`, `disableAnchor: true`
 - Cleanup: `map.destroy()` on unmount
 
 ### Scroll Lock
@@ -33,22 +33,21 @@ Two shadcn Button (variant="outline") below the map, each opens the wedding hall
 
 | Button | Mobile | Desktop |
 |---|---|---|
-| 네이버 지도 | `nmap://place?id={NMAP_PLACE_ID}` (deep link, `_self`) | `https://map.naver.com/p/entry/place/{NMAP_PLACE_ID}` (`_blank`) |
-| 카카오 지도 | `https://map.kakao.com/?itemId={KMAP_PLACE_ID}` (`_blank`) | `https://map.kakao.com/?itemId={KMAP_PLACE_ID}` (`_blank`) |
+| 네이버 지도 | `nmap://place?id={nmapPlaceId}` (deep link, `_self`) | `https://map.naver.com/p/entry/place/{nmapPlaceId}` (`_blank`) |
+| 카카오 지도 | `https://map.kakao.com/?itemId={kmapPlaceId}` (`_blank`) | `https://map.kakao.com/?itemId={kmapPlaceId}` (`_blank`) |
 
 - Uses `navigator.userAgent` match to detect iOS/Android vs desktop
 - `window.open(url, '_blank')` for all links except nmap deep link (`_self`)
 
 ### Props
 
-None (self-contained client component)
-
-### Constants
-
-- `LAT`: `37.4196541`
-- `LNG`: `127.1076838`
-- `NMAP_PLACE_ID`: `1950859773`
-- `KMAP_PLACE_ID`: `843214968`
+| Prop | Type | Description |
+|---|---|---|
+| `lat` | `number` | Wedding hall latitude |
+| `lng` | `number` | Wedding hall longitude |
+| `placeName` | `string` | Venue name (shown in InfoWindow) |
+| `nmapPlaceId` | `number` | Naver Map place ID (share link) |
+| `kmapPlaceId` | `number` | Kakao Map place ID (share link) |
 
 ### TBD
 

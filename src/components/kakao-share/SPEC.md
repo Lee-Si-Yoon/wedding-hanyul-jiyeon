@@ -15,36 +15,40 @@
 ### UI
 
 - shadcn Button (variant="outline")
-- Label: "카카옆으로 공유하기"
+- Label: "카카오톡으로 공유하기"
 - Full width
 
 ### On Click
 
-Calls `Kakao.Share.sendDefault` with `objectType: 'location'`:
+Calls `Kakao.Share.sendDefault` with `objectType: 'location'`, using props for all content:
 
 ```
 objectType: 'location'
 content:
-  title: '결혼식에 초대합니다'
-  description: 'ㅁㅁㅁ과 ㅁㅁㅁ의 결혼식에 초대합니다. 함께 축하해주세요!'
-  imageUrl: ${URL}/gallery-example-1.png
+  title: title prop
+  description: description prop
+  imageUrl: imageUrl prop
   link:
-    webUrl: URL
-    mobileWebUrl: URL
-address: '경기도 성남시 수정구 시흥동 63-5'
-addressTitle: '메종디탈리'
+    webUrl: siteUrl
+    mobileWebUrl: siteUrl
+address: address prop
+addressTitle: addressTitle prop
 buttons:
-  [0]: title: "초대장 보기", link: { webUrl: URL, mobileWebUrl: URL }
+  [0]: title: "초대장 보기", link: { webUrl: siteUrl, mobileWebUrl: siteUrl }
 installTalk: true
 ```
 
-Where `URL` = `https://wedding-hanyul-jiyeon.vercel.app` (hardcoded)
-
 ### Props
 
-None (self-contained client component)
+| Prop | Type | Description |
+|---|---|---|
+| `siteUrl` | `string` | Wedding site URL |
+| `address` | `string` | Wedding hall address |
+| `addressTitle` | `string` | Venue name |
+| `title` | `string` | Share message title |
+| `description` | `string` | Share message description |
+| `imageUrl` | `string` | Share card preview image URL |
 
 ### TBD
 
-- title, description, imageUrl content
 - NEXT_PUBLIC_KAKAO_JS_KEY value

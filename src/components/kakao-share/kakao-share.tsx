@@ -39,9 +39,22 @@ interface KakaoShareSettings {
 }
 
 const JS_KEY = process.env.NEXT_PUBLIC_KAKAO_JS_KEY;
-const URL = 'https://wedding-hanyul-jiyeon.vercel.app';
 
-export default function KakaoShare() {
+export default function KakaoShare({
+  siteUrl,
+  address,
+  addressTitle,
+  title,
+  description,
+  imageUrl,
+}: {
+  siteUrl: string;
+  address: string;
+  addressTitle: string;
+  title: string;
+  description: string;
+  imageUrl: string;
+}) {
   const [ready, setReady] = useState(false);
 
   function handleLoad() {
@@ -58,21 +71,20 @@ export default function KakaoShare() {
     window.Kakao.Share.sendDefault({
       objectType: 'location',
       content: {
-        title: '결혼식에 초대합니다',
-        description:
-          'ㅁㅁㅁ과 ㅁㅁㅁ의 결혼식에 초대합니다. 함께 축하해주세요!',
-        imageUrl: `${URL}/gallery-example-1.png`,
+        title,
+        description,
+        imageUrl,
         link: {
-          webUrl: URL,
-          mobileWebUrl: URL,
+          webUrl: siteUrl,
+          mobileWebUrl: siteUrl,
         },
       },
-      address: '경기도 성남시 수정구 시흥동 63-5',
-      addressTitle: '메종디탈리',
+      address,
+      addressTitle,
       buttons: [
         {
           title: '초대장 보기',
-          link: { webUrl: URL, mobileWebUrl: URL },
+          link: { webUrl: siteUrl, mobileWebUrl: siteUrl },
         },
       ],
     });

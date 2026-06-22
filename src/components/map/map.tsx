@@ -24,16 +24,24 @@ declare global {
 }
 
 const NCP_KEY = process.env.NEXT_PUBLIC_NAVER_MAP_CLIENT_ID;
-const LAT = 37.4196541;
-const LNG = 127.1076838;
-const NMAP_PLACE_ID = 1950859773;
-const KMAP_PLACE_ID = 843214968;
 
 function isMobile() {
   return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 }
 
-export default function Map() {
+export default function Map({
+  lat,
+  lng,
+  placeName,
+  nmapPlaceId,
+  kmapPlaceId,
+}: {
+  lat: number;
+  lng: number;
+  placeName: string;
+  nmapPlaceId: number;
+  kmapPlaceId: number;
+}) {
   const mapRef = useRef<HTMLDivElement>(null);
   const [ready, setReady] = useState(false);
   const [locked, setLocked] = useState(true);
@@ -48,7 +56,7 @@ export default function Map() {
   useEffect(() => {
     if (!ready || !mapRef.current || !window.naver) return;
 
-    const center = new window.naver.maps.LatLng(LAT, LNG);
+    const center = new window.naver.maps.LatLng(lat, lng);
     const map = new window.naver.maps.Map(mapRef.current, {
       center,
       zoom: 18,
@@ -60,7 +68,7 @@ export default function Map() {
     });
 
     const info = new window.naver.maps.InfoWindow({
-      content: '<div style="padding:4px 8px;font-size:13px;">메종디탈리</div>',
+      content: `<div style="padding:4px 8px;font-size:13px;">${placeName}</div>`,
       borderWidth: 0,
      disableAnchor: true,
     });
@@ -69,7 +77,7 @@ export default function Map() {
     return () => {
       map.destroy();
     };
-  }, [ready]);
+  }, [ready, lat, lng, placeName]);
 
   function flashLockMsg() {
     if (lockTimer.current) clearTimeout(lockTimer.current);
@@ -79,17 +87,17 @@ export default function Map() {
 
   function openNaver() {
     if (isMobile()) {
-      window.open(`nmap://place?id=${NMAP_PLACE_ID}`, '_self');
+      window.open(`nmap://place?id=${nmapPlaceId}`, '_self');
     } else {
       window.open(
-        `https://map.naver.com/p/entry/place/${NMAP_PLACE_ID}`,
+        `https://map.naver.com/p/entry/place/${nmapPlaceId}`,
         '_blank'
       );
     }
   }
 
   function openKakao() {
-    window.open(`https://map.kakao.com/?itemId=${KMAP_PLACE_ID}`, '_blank');
+    window.open(`https://map.kakao.com/?itemId=${kmapPlaceId}`, '_blank');
   }
 
   if (!NCP_KEY) return null;
