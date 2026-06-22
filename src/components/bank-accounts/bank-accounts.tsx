@@ -11,8 +11,8 @@ export type BankAccount = {
 };
 
 export default function BankAccounts({ label, accounts, children }: { label: string; accounts: BankAccount[]; children: React.ReactNode }) {
-  async function copyAccount(account: string) {
-    await navigator.clipboard.writeText(account);
+  async function copyAccount(text: string) {
+    await navigator.clipboard.writeText(text);
     window.alert('복사되었습니다');
   }
 
@@ -30,7 +30,7 @@ export default function BankAccounts({ label, accounts, children }: { label: str
                 <div className="font-medium">{a.name} ({a.holder})</div>
                 <div className="text-sm text-muted-foreground">{a.bank} {a.account}</div>
               </div>
-              <Button size="sm" variant="secondary" onClick={() => copyAccount(a.account)}>복사</Button>
+              <Button size="sm" variant="secondary" onClick={() => copyAccount(`${a.bank} ${a.account}`)}>복사</Button>
             </div>
           ))}
         </div>
