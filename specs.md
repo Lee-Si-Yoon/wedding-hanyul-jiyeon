@@ -5,6 +5,7 @@
 
 ## Software Stacks
 
+- pnpm
 - Next.js app
 - Tailwindcss
 - Shadcn/ui
