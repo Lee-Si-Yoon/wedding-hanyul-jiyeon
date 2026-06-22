@@ -18,8 +18,8 @@
 - Opens shadcn Dialog with responsive grid (2 cols mobile, 3 cols desktop)
 - Click thumbnail → close dialog, scroll carousel to that image
 
-### Images
+### Props
 
-- Hardcoded in component: ['/gallery-example-1.png', '/gallery-example-2.png', '/gallery-example-3.png']
+- `images: string[]` — array of image paths (e.g. ['/gallery-example-1.png', ...])
 - Stored in `public/` directory
 - Replace with actual wedding photos for production

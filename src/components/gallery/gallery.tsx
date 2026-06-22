@@ -14,13 +14,7 @@ import {
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 
-const IMAGES = [
-  '/gallery-example-1.png',
-  '/gallery-example-2.png',
-  '/gallery-example-3.png',
-];
-
-export default function Gallery() {
+export default function Gallery({ images }: { images: string[] }) {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [fullscreenIndex, setFullscreenIndex] = useState<number | null>(null);
@@ -54,7 +48,7 @@ export default function Gallery() {
         plugins={[Autoplay({ delay: 2000, stopOnInteraction: true })]}
       >
         <CarouselContent>
-          {IMAGES.map((src, i) => (
+          {images.map((src, i) => (
             <CarouselItem key={src} className="basis-full">
               <div
                 className="relative w-full aspect-[3/4] cursor-pointer"
@@ -70,7 +64,7 @@ export default function Gallery() {
       </Carousel>
 
       <div className="flex justify-center gap-1.5">
-        {IMAGES.map((_, i) => (
+        {images.map((_, i) => (
           <button
             key={i}
             className={`h-2 w-2 rounded-full transition-colors ${i === current ? 'bg-foreground' : 'bg-foreground/30'}`}
@@ -87,7 +81,7 @@ export default function Gallery() {
         <DialogContent className="max-w-2xl">
           <DialogTitle>사진 전체보기</DialogTitle>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-            {IMAGES.map((src, i) => (
+            {images.map((src, i) => (
               <div
                 key={src}
                 className="relative aspect-[3/4] cursor-pointer"
@@ -107,7 +101,7 @@ export default function Gallery() {
         >
           <div className="relative w-full h-full">
             <Image
-              src={IMAGES[fullscreenIndex]}
+              src={images[fullscreenIndex]}
               alt={`사진 ${fullscreenIndex + 1}`}
               fill
               sizes="100vw"

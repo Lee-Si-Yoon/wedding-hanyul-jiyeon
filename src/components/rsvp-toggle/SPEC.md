@@ -8,7 +8,7 @@
 ### Props
 
 - `enabled: boolean` — current state from `getUiFlag("rsvp")`
-- `updatedAt: Date | null` — last updated timestamp
+- `updatedAt: string | null` — last updated timestamp (pre-formatted server-side with `timeZone: 'Asia/Seoul'` to avoid hydration mismatch)
 
 ### UI
 

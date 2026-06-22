@@ -19,7 +19,7 @@
 
 ## Layout
 
-- Admin layout (`app/admin/layout.tsx`): wraps `/admin`, getServerSession() check, `<SessionProvider>`
+- Admin layout (`app/admin/layout.tsx`): wraps `/admin`, getServerSession() check, `<AuthProvider>` (client component wrapping `<SessionProvider>`)
 
 ## Admin-only guard
 

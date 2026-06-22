@@ -21,13 +21,7 @@
 
 #### Bank account number viewer
 
-- locates at `/`
-- A button opens up a modal that has bank account number and click to copy to clipboard function
-- Hardcoded list of people on frontend side:
-  - name: string (e.g. "신랑 측")
-  - bank: string (e.g. "신한")
-  - account: string (e.g. "123-456")
-  - holder: string (e.g. "김한율")
+→ See [Bank Accounts Spec](./src/components/bank-accounts/SPEC.md)
 
 #### RSVP - form
 

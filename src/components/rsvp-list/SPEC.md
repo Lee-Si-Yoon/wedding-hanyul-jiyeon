@@ -23,8 +23,8 @@
 
 ### Props
 
-- `list: SelectRsvp[]` — from `getRSVPList()` (excludes soft-deleted)
-- `summary: { total, mealYes, mealUndecided, sideGroom, sideBride, lastUpdatedAt }` — from `getRSVPSummary()`
+- `list: (SelectRsvp & { createdAtFormatted: string })[]` — from `getRSVPList()` (excludes soft-deleted), dates pre-formatted server-side with `timeZone: 'Asia/Seoul'`
+- `summary: { total, mealYes, mealUndecided, sideGroom, sideBride, lastUpdatedAt: string | null }` — from `getRSVPSummary()`, `lastUpdatedAt` pre-formatted server-side`
 
 ### Delete
 
