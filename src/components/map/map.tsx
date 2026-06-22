@@ -25,10 +25,6 @@ declare global {
 
 const NCP_KEY = process.env.NEXT_PUBLIC_NAVER_MAP_CLIENT_ID;
 
-function isMobile() {
-  return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-}
-
 export default function Map({
   lat,
   lng,
@@ -70,7 +66,7 @@ export default function Map({
     const info = new window.naver.maps.InfoWindow({
       content: `<div style="padding:4px 8px;font-size:13px;">${placeName}</div>`,
       borderWidth: 0,
-     disableAnchor: true,
+      disableAnchor: true,
     });
     info.open(map, marker);
 
@@ -83,21 +79,6 @@ export default function Map({
     if (lockTimer.current) clearTimeout(lockTimer.current);
     setShowLockMsg(true);
     lockTimer.current = setTimeout(() => setShowLockMsg(false), 3000);
-  }
-
-  function openNaver() {
-    if (isMobile()) {
-      window.open(`nmap://place?id=${nmapPlaceId}`, '_self');
-    } else {
-      window.open(
-        `https://map.naver.com/p/entry/place/${nmapPlaceId}`,
-        '_blank'
-      );
-    }
-  }
-
-  function openKakao() {
-    window.open(`https://map.kakao.com/?itemId=${kmapPlaceId}`, '_blank');
   }
 
   if (!NCP_KEY) return null;
@@ -143,11 +124,33 @@ export default function Map({
         <div ref={mapRef} className="w-full h-64" />
       </div>
       <div className="flex gap-2 mt-3">
-        <Button variant="outline" className="flex-1" onClick={openNaver}>
+        <Button
+          variant="outline"
+          className="flex-1"
+          nativeButton={false}
+          render={
+            <a
+              href={`https://map.naver.com/p/entry/place/${nmapPlaceId}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            />
+          }
+        >
           <MapPinIcon className="size-4" />
           네이버 지도
         </Button>
-        <Button variant="outline" className="flex-1" onClick={openKakao}>
+        <Button
+          variant="outline"
+          className="flex-1"
+          nativeButton={false}
+          render={
+            <a
+              href={`https://map.kakao.com/?itemId=${kmapPlaceId}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            />
+          }
+        >
           <NavigationIcon className="size-4" />
           카카오 지도
         </Button>
