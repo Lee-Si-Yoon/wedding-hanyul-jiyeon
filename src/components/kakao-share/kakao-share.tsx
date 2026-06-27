@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Script from 'next/script';
 import { Button } from '@/components/ui/button';
+import { MessageCircleIcon } from 'lucide-react';
 
 declare global {
   interface Window {
@@ -99,10 +100,12 @@ export default function KakaoShare({
       />
       <Button
         variant="outline"
+        size="lg"
         className="w-full"
         onClick={handleShare}
         disabled={!ready}
       >
+        <MessageCircleIcon className="size-5" />
         카카오톡으로 공유하기
       </Button>
     </>

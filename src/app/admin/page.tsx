@@ -24,7 +24,9 @@ export default async function AdminPage() {
 
   const formattedSummary = {
     ...summary,
-    lastUpdatedAt: summary.lastUpdatedAt ? fmtDate(summary.lastUpdatedAt) : null,
+    lastUpdatedAt: summary.lastUpdatedAt
+      ? fmtDate(summary.lastUpdatedAt)
+      : null,
   };
 
   return (
@@ -33,7 +35,10 @@ export default async function AdminPage() {
         <h1 className="text-2xl font-bold">관리자</h1>
         <SignOutButton />
       </div>
-      <RsvpToggle enabled={uiFlag?.enabled ?? false} updatedAt={uiFlag?.updatedAt ? fmtDate(uiFlag.updatedAt) : null} />
+      <RsvpToggle
+        enabled={uiFlag?.enabled ?? false}
+        updatedAt={uiFlag?.updatedAt ? fmtDate(uiFlag.updatedAt) : null}
+      />
       <RsvpList list={formattedList} summary={formattedSummary} />
     </div>
   );

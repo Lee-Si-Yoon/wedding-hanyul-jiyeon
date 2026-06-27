@@ -6,14 +6,14 @@
 
 ### Props
 
-| Prop | Type |
-|---|---|
-| groomName | string |
-| brideName | string |
+| Prop       | Type   |
+| ---------- | ------ |
+| groomName  | string |
+| brideName  | string |
 | dateSpaced | string |
-| weekday | string |
-| timeStr | string |
-| placeName | string |
+| weekday    | string |
+| timeStr    | string |
+| placeName  | string |
 
 ### Motion
 

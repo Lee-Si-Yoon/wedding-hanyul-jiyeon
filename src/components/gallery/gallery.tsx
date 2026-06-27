@@ -54,7 +54,14 @@ export default function Gallery({ images }: { images: string[] }) {
                 className="relative w-full aspect-[3/4] cursor-pointer"
                 onClick={() => setFullscreenIndex(i)}
               >
-                <Image src={src} alt={`사진 ${i + 1}`} fill sizes="(max-width:448px) 100vw, 448px" className="object-cover" priority={i === 0} />
+                <Image
+                  src={src}
+                  alt={`사진 ${i + 1}`}
+                  fill
+                  sizes="(max-width:448px) 100vw, 448px"
+                  className="object-cover"
+                  priority={i === 0}
+                />
               </div>
             </CarouselItem>
           ))}
@@ -68,16 +75,18 @@ export default function Gallery({ images }: { images: string[] }) {
           <button
             key={i}
             className={`h-2 rounded-full transition-all duration-300 ${
-              i === current
-                ? 'w-5 bg-brand'
-                : 'w-2 bg-foreground/25'
+              i === current ? 'w-5 bg-brand' : 'w-2 bg-foreground/25'
             }`}
             onClick={() => api?.scrollTo(i)}
           />
         ))}
       </div>
 
-      <Button variant="outline" className="w-full" onClick={() => setDialogOpen(true)}>
+      <Button
+        variant="outline"
+        className="w-full"
+        onClick={() => setDialogOpen(true)}
+      >
         사진 전체보기
       </Button>
 
@@ -91,7 +100,13 @@ export default function Gallery({ images }: { images: string[] }) {
                 className="relative aspect-[3/4] cursor-pointer"
                 onClick={() => handleThumbnailClick(i)}
               >
-                <Image src={src} alt={`사진 ${i + 1}`} fill sizes="(max-width:768px) 50vw, 33vw" className="object-cover rounded" />
+                <Image
+                  src={src}
+                  alt={`사진 ${i + 1}`}
+                  fill
+                  sizes="(max-width:768px) 50vw, 33vw"
+                  className="object-cover rounded"
+                />
               </div>
             ))}
           </div>

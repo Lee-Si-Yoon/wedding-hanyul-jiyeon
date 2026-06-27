@@ -15,14 +15,14 @@ installTalk: true
 
 ### Props
 
-| Prop | Type |
-|---|---|
-| siteUrl | string |
-| address | string |
+| Prop         | Type   |
+| ------------ | ------ |
+| siteUrl      | string |
+| address      | string |
 | addressTitle | string |
-| title | string |
-| description | string |
-| imageUrl | string |
+| title        | string |
+| description  | string |
+| imageUrl     | string |
 
 ### TBD
 

@@ -15,18 +15,18 @@
 
 `<a>` links via shadcn Button (`nativeButton={false}`), preload-ready:
 
-| Button | href |
-|---|---|
+| Button      | href                                                |
+| ----------- | --------------------------------------------------- |
 | 네이버 지도 | `https://map.naver.com/p/entry/place/{nmapPlaceId}` |
-| 카카오 지도 | `https://map.kakao.com/?itemId={kmapPlaceId}` |
+| 카카오 지도 | `https://map.kakao.com/?itemId={kmapPlaceId}`       |
 
 ### Props
 
-| Prop | Type |
-|---|---|
-| lat | number |
-| lng | number |
-| placeName | string |
+| Prop        | Type   |
+| ----------- | ------ |
+| lat         | number |
+| lng         | number |
+| placeName   | string |
 | nmapPlaceId | number |
 | kmapPlaceId | number |
 

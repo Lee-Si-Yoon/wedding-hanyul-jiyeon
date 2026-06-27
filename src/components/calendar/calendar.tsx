@@ -18,16 +18,20 @@ function DdayCountdown({ target }: { target: Date }) {
   const [now, setNow] = useState<Date | null>(null);
 
   useEffect(() => {
-    setNow(new Date());
-    const id = setInterval(() => setNow(new Date()), 1000);
-    return () => clearInterval(id);
+    let id: ReturnType<typeof setTimeout>;
+    function tick() {
+      setNow(new Date());
+      id = setTimeout(tick, 1000);
+    }
+    id = setTimeout(tick, 0);
+    return () => clearTimeout(id);
   }, []);
 
   if (!now) return null;
 
   const diff = target.getTime() - now.getTime();
   if (diff <= 0) {
-    return <div className="text-center text-lg font-medium">D-day</div>;
+    return <div className="text-center text-3xl font-semibold">D-day</div>;
   }
 
   const days = Math.floor(diff / DAY_MS);
@@ -37,7 +41,7 @@ function DdayCountdown({ target }: { target: Date }) {
   const label = days === 0 ? 'D-day' : `D-${days}`;
 
   return (
-    <div className="text-center text-lg font-medium tabular-nums">
+    <div className="text-center text-3xl font-semibold tabular-nums sm:text-4xl">
       {label} {pad(hours)}:{pad(minutes)}:{pad(seconds)}
     </div>
   );
@@ -51,7 +55,7 @@ export default function WeddingCalendar({
   const target = new Date(targetDate);
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-7">
       <div className="flex justify-center">
         <Calendar
           mode="single"
@@ -61,10 +65,15 @@ export default function WeddingCalendar({
           hideNavigation
           captionLayout="label"
           locale={ko}
-          className="pointer-events-none"
+          className="pointer-events-none p-0 text-base [--cell-size:2.9rem] sm:[--cell-size:3.35rem] [&_.rdp-caption_label]:text-xl [&_.rdp-caption_label]:font-semibold [&_.rdp-weekday]:text-sm [&_.rdp-weekday]:font-medium"
           components={{
             DayButton: (props) => (
-              <CalendarDayButton {...props} tabIndex={-1} locale={ko} />
+              <CalendarDayButton
+                {...props}
+                tabIndex={-1}
+                locale={ko}
+                className="text-base sm:text-lg"
+              />
             ),
           }}
         />

@@ -5,7 +5,13 @@ import { updateUiFlagAction } from '@/db/actions';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 
-export default function RsvpToggle({ enabled, updatedAt }: { enabled: boolean; updatedAt: string | null }) {
+export default function RsvpToggle({
+  enabled,
+  updatedAt,
+}: {
+  enabled: boolean;
+  updatedAt: string | null;
+}) {
   const [checked, setChecked] = useState(enabled);
   const [pending, setPending] = useState(false);
 
@@ -24,9 +30,17 @@ export default function RsvpToggle({ enabled, updatedAt }: { enabled: boolean; u
 
   return (
     <div className="flex items-center gap-3">
-      <Switch checked={checked} onCheckedChange={handleToggle} disabled={pending} />
+      <Switch
+        checked={checked}
+        onCheckedChange={handleToggle}
+        disabled={pending}
+      />
       <Label>RSVP {checked ? '활성화' : '비활성화'}</Label>
-      {updatedAt && <span className="text-sm text-muted-foreground">업데이트: {updatedAt}</span>}
+      {updatedAt && (
+        <span className="text-sm text-muted-foreground">
+          업데이트: {updatedAt}
+        </span>
+      )}
     </div>
   );
 }

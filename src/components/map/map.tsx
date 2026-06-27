@@ -107,8 +107,11 @@ export default function Map({
             )}
           </div>
         )}
-        <button
-          className={`absolute top-3 right-3 z-20 rounded-full p-2 shadow-md ${locked ? 'bg-white' : 'bg-white/80'}`}
+        <Button
+          variant="outline"
+          size="icon-sm"
+          aria-label={locked ? '지도 터치 잠금 해제' : '지도 터치 잠금'}
+          className="absolute top-3 right-3 z-20 rounded-full bg-white"
           onClick={() => {
             if (lockTimer.current) clearTimeout(lockTimer.current);
             setShowLockMsg(false);
@@ -120,7 +123,7 @@ export default function Map({
           ) : (
             <UnlockIcon className="size-4" />
           )}
-        </button>
+        </Button>
         <div ref={mapRef} className="w-full h-64" />
       </div>
       <div className="flex gap-2 mt-3">

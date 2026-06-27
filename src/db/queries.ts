@@ -16,10 +16,7 @@ export async function getUiFlag(name: string) {
 }
 
 export async function deleteRSVP(id: number) {
-  await db
-    .update(rsvp)
-    .set({ deletedAt: new Date() })
-    .where(eq(rsvp.id, id));
+  await db.update(rsvp).set({ deletedAt: new Date() }).where(eq(rsvp.id, id));
 }
 
 export async function updateUiFlag(name: string, enabled: boolean) {

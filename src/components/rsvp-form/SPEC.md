@@ -4,12 +4,12 @@
 
 ### Fields
 
-| Field | Component | Label | Default |
-|---|---|---|---|
-| side | RadioGroup | 신랑측 / 신부측 | 신랑측 |
-| name | Input | 이름 | (empty) |
-| meal | Select | 식사 여부: 식사함 / 안함 / 미정 | (empty, placeholder "선택해 주세요") |
-| count | Input[number] | 참석 인원 (본인포함) | 1 |
+| Field | Component     | Label                           | Default                              |
+| ----- | ------------- | ------------------------------- | ------------------------------------ |
+| side  | RadioGroup    | 신랑측 / 신부측                 | 신랑측                               |
+| name  | Input         | 이름                            | (empty)                              |
+| meal  | Select        | 식사 여부: 식사함 / 안함 / 미정 | (empty, placeholder "선택해 주세요") |
+| count | Input[number] | 참석 인원 (본인포함)            | 1                                    |
 
 ### Validation
 

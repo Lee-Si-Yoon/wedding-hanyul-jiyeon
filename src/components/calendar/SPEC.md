@@ -13,8 +13,8 @@
 
 ### Props
 
-| Prop | Type | Format |
-|---|---|---|
+| Prop       | Type   | Format                                           |
+| ---------- | ------ | ------------------------------------------------ |
 | targetDate | string | `YYYY-MM-DDTHH:MM:SS` (local time, no tz offset) |
 
 ### Dependencies

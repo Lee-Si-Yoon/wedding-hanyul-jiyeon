@@ -2,7 +2,14 @@
 
 import { deleteRSVPAction } from '@/db/actions';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import type { SelectRsvp } from '@/db/schema';
 
@@ -17,7 +24,13 @@ type RsvpSummary = {
   lastUpdatedAt: string | null;
 };
 
-export default function RsvpList({ list, summary }: { list: RsvpRow[]; summary: RsvpSummary }) {
+export default function RsvpList({
+  list,
+  summary,
+}: {
+  list: RsvpRow[];
+  summary: RsvpSummary;
+}) {
   async function handleDelete(id: number) {
     if (!confirm('정말 삭제하시겠습니까?')) return;
     await deleteRSVPAction(id);
@@ -32,13 +45,21 @@ export default function RsvpList({ list, summary }: { list: RsvpRow[]; summary: 
   return (
     <div className="space-y-4">
       <Card>
-        <CardHeader><CardTitle>RSVP 요약</CardTitle></CardHeader>
+        <CardHeader>
+          <CardTitle>RSVP 요약</CardTitle>
+        </CardHeader>
         <CardContent className="grid grid-cols-2 gap-2 text-sm">
           <div>총 참석자: {summary.total}</div>
           <div>식사: {summary.mealYes}</div>
           <div>미정: {summary.mealUndecided}</div>
-          <div>신랑측: {summary.sideGroom} / 신부측: {summary.sideBride}</div>
-          {summary.lastUpdatedAt && <div className="col-span-2">마지막 업데이트: {summary.lastUpdatedAt}</div>}
+          <div>
+            신랑측: {summary.sideGroom} / 신부측: {summary.sideBride}
+          </div>
+          {summary.lastUpdatedAt && (
+            <div className="col-span-2">
+              마지막 업데이트: {summary.lastUpdatedAt}
+            </div>
+          )}
         </CardContent>
       </Card>
       <Table>
@@ -60,7 +81,15 @@ export default function RsvpList({ list, summary }: { list: RsvpRow[]; summary: 
               <TableCell>{mealLabel(r.meal)}</TableCell>
               <TableCell>{r.count}</TableCell>
               <TableCell>{r.createdAtFormatted}</TableCell>
-              <TableCell><Button variant="destructive" size="sm" onClick={() => handleDelete(r.id)}>삭제</Button></TableCell>
+              <TableCell>
+                <Button
+                  variant="destructive"
+                  size="sm"
+                  onClick={() => handleDelete(r.id)}
+                >
+                  삭제
+                </Button>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

@@ -14,7 +14,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: '한율 · 지연의 결혼식에 초대합니다',
-  description: '2026년 9월 5일 토요일, 메종디탈리에서 열리는 한율과 지연의 결혼식에 초대합니다.',
+  description:
+    '2026년 9월 5일 토요일, 메종디탈리에서 열리는 한율과 지연의 결혼식에 초대합니다.',
   openGraph: {
     title: '한율 · 지연의 결혼식에 초대합니다',
     description: '2026년 9월 5일 토요일, 메종디탈리.',
