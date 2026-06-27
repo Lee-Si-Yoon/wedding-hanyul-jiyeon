@@ -8,7 +8,7 @@
 |---|---|---|---|
 | side | RadioGroup | 신랑측 / 신부측 | 신랑측 |
 | name | Input | 이름 | (empty) |
-| meal | Select | 식사 여부: 식사함 / 안함 / 미정 | 식사함 |
+| meal | Select | 식사 여부: 식사함 / 안함 / 미정 | (empty, placeholder "선택해 주세요") |
 | count | Input[number] | 참석 인원 (본인포함) | 1 |
 
 ### Validation
@@ -18,7 +18,7 @@
 ### Visibility
 
 - `enabled: boolean` (from `getUiFlag("rsvp")`)
-- disabled → submit button disabled
+- disabled → entire form disabled via `<fieldset disabled>`; muted reason line shown ("지금은 참석여부 전달을 받고 있지 않습니다")
 
 ### Feedback
 
