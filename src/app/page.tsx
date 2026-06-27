@@ -7,6 +7,7 @@ import BankAccounts, {
 import KakaoShare from '@/components/kakao-share/kakao-share';
 import Map from '@/components/map/map';
 import WeddingCalendar from '@/components/calendar/calendar';
+import { Hero } from '@/components/hero/hero';
 
 const GALLERY_IMAGES = [
   '/gallery-example-1.png',
@@ -68,51 +69,14 @@ export default async function Home() {
 
   return (
     <main className="flex-1 w-full">
-      {/* Hero */}
-      <section
-        aria-label="결혼식 초대"
-        className="relative flex min-h-[88vh] flex-col items-center justify-center px-6 text-center"
-      >
-        <p
-          data-hero
-          className="text-sm font-medium tracking-[0.08em] text-muted-foreground"
-        >
-          결혼식에 초대합니다
-        </p>
-        <h1
-          data-hero
-          data-hero-delay="1"
-          className="mt-7 text-[clamp(2.25rem,11vw,3.5rem)] font-semibold leading-[1.15] tracking-[-0.01em]"
-        >
-          {GROOM_NAME} · {BRIDE_NAME}
-        </h1>
-        <p
-          data-hero
-          data-hero-delay="2"
-          className="mt-5 text-xl font-medium tabular-nums tracking-[0.15em] text-brand sm:text-2xl"
-        >
-          {DATE_SPACED}
-        </p>
-        <p data-hero data-hero-delay="3" className="mt-2 text-sm text-muted-foreground">
-          {WEEKDAY} {TIME_STR} · {PLACE_NAME}
-        </p>
-        <div
-          data-hero
-          data-hero-delay="5"
-          aria-hidden="true"
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-muted-foreground/60"
-        >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M6 9l6 6 6-6"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </div>
-      </section>
+      <Hero
+        groomName={GROOM_NAME}
+        brideName={BRIDE_NAME}
+        dateSpaced={DATE_SPACED}
+        weekday={WEEKDAY}
+        timeStr={TIME_STR}
+        placeName={PLACE_NAME}
+      />
 
       {/* Content */}
       <div className="mx-auto w-full max-w-[640px] px-6">

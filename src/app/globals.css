@@ -157,37 +157,6 @@
   }
 }
 
-/*
-  Motion · hero entrance fires on page load. Content is visible by default
-  (animation ends at opacity:1), so disabled-motion / headless render never
-  ships blank.
-*/
-@keyframes heroIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-[data-hero] {
-  animation: heroIn 0.8s var(--ease-out-quart) both;
-}
-[data-hero-delay="1"] { animation-delay: 0.08s; }
-[data-hero-delay="2"] { animation-delay: 0.18s; }
-[data-hero-delay="3"] { animation-delay: 0.28s; }
-[data-hero-delay="5"] { animation-delay: 0.48s; }
-
-@media (prefers-reduced-motion: reduce) {
-  [data-hero],
-  [data-hero-delay] {
-    animation: none;
-  }
-}
-
 @layer components {
   /* Section heading system: ink rule beneath an h2, one quiet brand mark. */
   .section-heading {

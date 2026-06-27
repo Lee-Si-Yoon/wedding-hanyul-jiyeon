@@ -8,9 +8,9 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 ## Project
 
-Wedding invitation site for 한율 & 지연.
+Wedding invitation site for 이한율 & 김지연.
 
-Stack: Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4, shadcn/ui (base-ui), Drizzle ORM (Neon Postgres), NextAuth v4.
+Stack: Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4, shadcn/ui (base-ui), motion, Drizzle ORM (Neon Postgres), NextAuth v4.
 
 ## Specs
 
