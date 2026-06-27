@@ -6,6 +6,7 @@ import BankAccounts, {
 } from '@/components/bank-accounts/bank-accounts';
 import KakaoShare from '@/components/kakao-share/kakao-share';
 import Map from '@/components/map/map';
+import WeddingCalendar from '@/components/calendar/calendar';
 
 const GALLERY_IMAGES = [
   '/gallery-example-1.png',
@@ -33,6 +34,7 @@ const BRIDE_ACCOUNTS: BankAccount[] = [
   },
 ];
 
+const WEDDING_AT = '2026-09-05T17:30:00';
 const SITE_URL = 'https://wedding-hanyul-jiyeon.vercel.app';
 const PLACE_NAME = '메종디탈리';
 const PLACE_ADDRESS = '경기도 성남시 수정구 시흥동 63-5';
@@ -41,7 +43,8 @@ const PLACE_LNG = 127.1076838;
 const NMAP_PLACE_ID = 1950859773;
 const KMAP_PLACE_ID = 843214968;
 const KAKAO_SHARE_TITLE = '결혼식에 초대합니다';
-const KAKAO_SHARE_DESCRIPTION = 'ㅁㅁㅁ과 ㅁㅁㅁ의 결혼식에 초대합니다. 함께 축하해주세요!';
+const KAKAO_SHARE_DESCRIPTION =
+  'ㅁㅁㅁ과 ㅁㅁㅁ의 결혼식에 초대합니다. 함께 축하해주세요!';
 const KAKAO_SHARE_IMAGE_URL = `${SITE_URL}/gallery-example-1.png`;
 
 export default async function Home() {
@@ -50,6 +53,10 @@ export default async function Home() {
 
   return (
     <div className="p-6 max-w-md space-y-8">
+      <div>
+        <h2>결혼식 일시</h2>
+        <WeddingCalendar targetDate={WEDDING_AT} />
+      </div>
       <div>
         <h2>사진첩</h2>
         <Gallery images={GALLERY_IMAGES} />

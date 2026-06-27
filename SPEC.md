@@ -5,6 +5,7 @@
 
 ## Frontend
 
+- Calendar → [Spec](./src/components/calendar/SPEC.md)
 - Map → [Spec](./src/components/map/SPEC.md)
 - Gallery → [Spec](./src/components/gallery/SPEC.md)
 - Bank Accounts → [Spec](./src/components/bank-accounts/SPEC.md)
