@@ -90,7 +90,7 @@ export default function Map({
         strategy="afterInteractive"
         onLoad={handleLoad}
       />
-      <div className="relative">
+      <div className="relative isolate">
         {locked && (
           <div
             className="absolute inset-0 z-10"
