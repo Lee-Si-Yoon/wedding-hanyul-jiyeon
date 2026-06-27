@@ -67,7 +67,11 @@ export default function Gallery({ images }: { images: string[] }) {
         {images.map((_, i) => (
           <button
             key={i}
-            className={`h-2 w-2 rounded-full transition-colors ${i === current ? 'bg-foreground' : 'bg-foreground/30'}`}
+            className={`h-2 rounded-full transition-all duration-300 ${
+              i === current
+                ? 'w-5 bg-brand'
+                : 'w-2 bg-foreground/25'
+            }`}
             onClick={() => api?.scrollTo(i)}
           />
         ))}

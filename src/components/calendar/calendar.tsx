@@ -13,12 +13,17 @@ function pad(n: number) {
 }
 
 function DdayCountdown({ target }: { target: Date }) {
-  const [now, setNow] = useState(() => new Date());
+  // ponytail: null until mount so server and first client render match;
+  // the countdown is live time, never part of the hydration diff.
+  const [now, setNow] = useState<Date | null>(null);
 
   useEffect(() => {
+    setNow(new Date());
     const id = setInterval(() => setNow(new Date()), 1000);
     return () => clearInterval(id);
   }, []);
+
+  if (!now) return null;
 
   const diff = target.getTime() - now.getTime();
   if (diff <= 0) {
