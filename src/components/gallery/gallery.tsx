@@ -45,7 +45,7 @@ export default function Gallery({ images }: { images: string[] }) {
       <Carousel
         setApi={setApi}
         opts={{ loop: true }}
-        plugins={[Autoplay({ delay: 3000, stopOnInteraction: true })]}
+        plugins={[Autoplay({ delay: 5000, stopOnInteraction: true })]}
       >
         <CarouselContent>
           {images.map((src, i) => (
@@ -91,9 +91,9 @@ export default function Gallery({ images }: { images: string[] }) {
       </Button>
 
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent className="max-w-2xl">
+        <DialogContent className="max-w-2xl max-h-[85dvh]">
           <DialogTitle>사진 전체보기</DialogTitle>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-2 overflow-y-auto">
             {images.map((src, i) => (
               <div
                 key={src}
