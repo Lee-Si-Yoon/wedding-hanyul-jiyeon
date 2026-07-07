@@ -12,6 +12,7 @@
   --font-heading: var(--font-sans);
   --color-brand: var(--brand);
   --color-brand-tint: var(--brand-tint);
+  --color-surface: var(--surface);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -71,6 +72,7 @@
   --ring: oklch(0.21 0 0);
   --brand: oklch(0.21 0 0);
   --brand-tint: oklch(0.96 0 0);
+  --surface: #E9E9E9;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -129,6 +131,7 @@
   }
   html {
     @apply font-sans;
+    letter-spacing: -0.04em;
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
   }
@@ -145,5 +148,42 @@
   }
   p {
     text-wrap: pretty;
+    white-space: pre-line;
   }
+}
+
+@utility text-heading {
+  font-size: 1.3125rem;
+  font-weight: 600;
+  line-height: 1.47;
+}
+@utility text-label {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.47;
+}
+@utility text-name {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+@utility text-body {
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.75;
+}
+@utility text-body-loose {
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.9;
+}
+@utility text-body-spaced {
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 2.96;
+}
+@utility text-button {
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.75;
 }

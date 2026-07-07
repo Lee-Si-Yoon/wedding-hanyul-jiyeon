@@ -70,10 +70,10 @@ export default async function Home() {
   const enabled = uiFlag?.enabled ?? false;
 
   return (
-    <main className="flex-1 w-full bg-white text-[#000] font-['Pretendard']">
-      <div className="mx-auto w-full max-w-[375px]">
+    <main className="flex-1 w-full bg-white text-foreground font-sans">
+      <div className="mx-auto w-full max-w-[23.4375rem]">
         {/* Hero */}
-        <div className="relative w-full h-[496px]">
+        <div className="relative w-full h-[31rem]">
           <Image
             src="/hero.png"
             alt={`${BRIDE_NAME}-${GROOM_NAME}`}
@@ -85,7 +85,7 @@ export default async function Home() {
         </div>
 
         {/* Invitation text + Sketching Our Future */}
-        <section className="flex flex-col items-center gap-12 py-[25px]">
+        <section className="flex flex-col items-center gap-12 py-6">
           <div className="flex items-center justify-center px-12">
             <Image
               src="/title_sketching_our_future.svg"
@@ -96,62 +96,47 @@ export default async function Home() {
               priority
             />
           </div>
-          <div className="flex flex-col items-center gap-[55px] px-0 pb-[25px]">
-            <p className="w-[252px] text-center text-[15px] font-medium leading-[2.96em] tracking-[-0.04em]">
+          <div className="flex flex-col items-center gap-14 pb-6">
+            <p className="text-center text-body-spaced">
               종이 냄새를 좋아하는 공학도와{`\n`}
               물감 냄새를 좋아하는 미술학도가 만나,{`\n`}한 폭의 그림을 그려
               나가려 합니다.{`\n`}
               색이 채워지는 순간을 함께해 주세요.
             </p>
-            <div className="flex flex-col items-center gap-[11px]">
-              <div className="flex flex-col items-center justify-center gap-[10px]">
-                <span className="text-center text-[15px] font-medium leading-[1.4em] tracking-[-0.04em]">
-                  이경복 손재희 의
-                </span>
-                <span className="text-center text-[15px] font-normal leading-[1.4em] tracking-[-0.04em]">
-                  장남
-                </span>
-                <span className="text-center text-[15px] font-medium leading-[1.4em] tracking-[-0.04em]">
-                  이한율
-                </span>
+            <div className="flex flex-col items-center gap-3">
+              <div className="flex items-center justify-center gap-2.5">
+                <span className="text-center text-name">이경복 손재희 의</span>
+                <span className="text-center text-body">장남</span>
+                <span className="text-center text-name">이한율</span>
               </div>
-              <div className="flex flex-col items-center justify-center gap-[10px]">
-                <span className="text-center text-[15px] font-medium leading-[1.4em] tracking-[-0.04em]">
-                  김수헌 김종옥 의
-                </span>
-                <span className="text-center text-[15px] font-normal leading-[1.4em] tracking-[-0.04em]">
-                  차녀
-                </span>
-                <span className="text-center text-[15px] font-medium leading-[1.4em] tracking-[-0.04em]">
-                  김지연
-                </span>
+              <div className="flex items-center justify-center gap-2.5">
+                <span className="text-center text-name">김수헌 김종옥 의</span>
+                <span className="text-center text-body">차녀</span>
+                <span className="text-center text-name">김지연</span>
               </div>
             </div>
           </div>
         </section>
 
         {/* Gallery */}
-        <section className="flex flex-col items-center gap-[30px] py-[15px] pb-[63px]">
-          <div className="relative w-full h-[63px]">
+        <section className="flex flex-col items-center gap-8 py-4 pb-16">
+          <div className="flex items-center justify-center w-full">
             <Image
               src="/title_gallery.png"
               alt="Gallery"
-              width={91}
-              height={36}
+              width={133}
+              height={90}
               style={{ width: 'auto', height: 'auto' }}
-              className="absolute left-1/2 top-1/2 -translate-x-[20px] translate-y-[10px]"
             />
           </div>
           <Gallery images={GALLERY_IMAGES} />
         </section>
 
         {/* RSVP — #E9E9E9 bg */}
-        <section className="bg-[#E9E9E9] py-[45px] px-0">
-          <div className="px-[37px]">
-            <h2 className="text-center text-[21px] font-semibold leading-[1.47em] tracking-[-0.04em]">
-              참석 의사 전달
-            </h2>
-            <p className="mt-[18px] text-center text-[15px] font-normal leading-[1.75em] tracking-[-0.04em]">
+        <section className="bg-surface py-11">
+          <div className="px-10">
+            <h2 className="text-center text-heading">참석 의사 전달</h2>
+            <p className="mt-5 text-center text-body">
               축하의 마음으로 참석해 주실 모든 분을{`\n`}
               정중히 모시고자 하오니,{`\n`}
               참석 여부를 알려주시면 감사하겠습니다.
@@ -161,37 +146,33 @@ export default async function Home() {
         </section>
 
         {/* Date */}
-        <section className="py-[40px]">
-          <div className="px-[37px]">
-            <h2 className="text-center text-[21px] font-semibold leading-[1.47em] tracking-[-0.04em]">
-              결혼식 일시
-            </h2>
+        <section className="py-10">
+          <div className="px-10">
+            <h2 className="text-center text-heading">결혼식 일시</h2>
           </div>
-          <div className="mt-[31px] flex flex-col items-center gap-[31px]">
-            <p className="text-center text-[15px] font-normal leading-[1.9em] tracking-[-0.04em]">
+          <div className="mt-8 flex flex-col items-center gap-8">
+            <p className="text-center text-body-loose">
               2026년 9월 5일 토요일 오후 5시 30분{`\n`}
               메종디탈리 (Maison d&apos;Italie)
             </p>
-            <p className="text-center text-[15px] font-normal leading-[2.96em] tracking-[-0.04em]">
+            <p className="text-center text-body-spaced">
               밝은 차림으로 그날의 저녁을 빛내주세요.
             </p>
           </div>
-          <div className="mt-[35px]">
+          <div className="mt-9">
             <WeddingCalendar targetDate={WEDDING_AT} />
           </div>
         </section>
 
         {/* Directions */}
-        <section className="py-[15px] pb-[45px]">
-          <div className="px-[37px]">
-            <h2 className="text-center text-[21px] font-semibold leading-[1.47em] tracking-[-0.04em]">
-              오시는 길
-            </h2>
-            <p className="mt-[18px] text-center text-[15px] font-normal leading-[1.75em] tracking-[-0.04em]">
+        <section className="py-4 pb-12">
+          <div className="px-10">
+            <h2 className="text-center text-heading">오시는 길</h2>
+            <p className="mt-5 text-center text-body">
               메종 디탈리{`\n`}경기도 성남시 수정구 시흥동 63-5
             </p>
           </div>
-          <div className="mt-[14px]">
+          <div className="mt-3.5">
             <Map
               lat={PLACE_LAT}
               lng={PLACE_LNG}
@@ -201,27 +182,23 @@ export default async function Home() {
             />
           </div>
           {/* Detail sections */}
-          <div className="mt-[15px] flex flex-col gap-0">
-            <div className="px-0 py-[13px]">
-              <h3 className="text-[15px] font-semibold leading-[1.47em] tracking-[-0.04em]">
-                주소
-              </h3>
-              <p className="text-[15px] font-normal leading-[1.75em] tracking-[-0.04em]">
+          <div className="mt-4 flex flex-col">
+            <div className="py-3.5">
+              <h3 className="text-label">주소</h3>
+              <p className="text-body">
                 메종디탈리{`\n`}경기 성남시 수정구 설개로 39{`\n`}T. 02-579-6166
                 / 02-579-6165
               </p>
             </div>
-            <div className="px-0 py-[13px]">
-              <h3 className="text-[15px] font-semibold leading-[1.47em] tracking-[-0.04em]">
-                셔틀
-              </h3>
-              <div className="flex flex-col gap-[5px]">
-                <p className="text-[15px] font-normal leading-[1.75em] tracking-[-0.04em]">
+            <div className="py-3.5">
+              <h3 className="text-label">셔틀</h3>
+              <div className="flex flex-col gap-1.5">
+                <p className="text-body">
                   수서역 6번 출구에서{`\n`}
                   메종디탈리 요원의 안내에 따라 7m 직진하면{`\n`}
                   셔틀을 이용하실 수 있습니다.
                 </p>
-                <p className="text-[15px] font-normal leading-[1.75em] tracking-[-0.04em]">
+                <p className="text-body">
                   <span className="font-semibold">
                     예식 시간 기준 1시간 전부터 총 4시간 운행됩니다.
                   </span>
@@ -229,30 +206,24 @@ export default async function Home() {
                 </p>
               </div>
             </div>
-            <div className="px-0 py-[13px]">
-              <h3 className="text-[15px] font-semibold leading-[1.47em] tracking-[-0.04em]">
-                버스
-              </h3>
-              <p className="text-[15px] font-normal leading-[1.75em] tracking-[-0.04em]">
+            <div className="py-3.5">
+              <h3 className="text-label">버스</h3>
+              <p className="text-body">
                 성남농협영농종합지원센터 하차 도보5분 거리{`\n`}
                 (노선 9800 / 9400 / 9408)
               </p>
             </div>
-            <div className="px-0 py-[13px]">
-              <h3 className="text-[15px] font-semibold leading-[1.47em] tracking-[-0.04em]">
-                주차
-              </h3>
-              <p className="text-[15px] font-normal leading-[1.75em] tracking-[-0.04em]">
+            <div className="py-3.5">
+              <h3 className="text-label">주차</h3>
+              <p className="text-body">
                 메종디탈리 주차장을 이용하실 수 있습니다.{`\n`}
                 주차 자리가 협소하여{`\n`}
                 대중교통과 셔틀 이용을 권장드립니다.
               </p>
             </div>
-            <div className="px-0 py-[13px]">
-              <h3 className="text-[15px] font-semibold leading-[1.47em] tracking-[-0.04em]">
-                드레스 코드
-              </h3>
-              <p className="text-[15px] font-normal leading-[1.75em] tracking-[-0.04em]">
+            <div className="py-3.5">
+              <h3 className="text-label">드레스 코드</h3>
+              <p className="text-body">
                 밝은 차림으로 그날의 저녁을 빛내주세요.
               </p>
             </div>
@@ -260,17 +231,15 @@ export default async function Home() {
         </section>
 
         {/* Gift — #E9E9E9 bg */}
-        <section className="bg-[#E9E9E9] py-[45px]">
-          <div className="flex flex-col gap-[18px] w-[375px]">
-            <h2 className="text-center text-[21px] font-semibold leading-[1.47em] tracking-[-0.04em]">
-              마음 전하기
-            </h2>
-            <p className="text-center text-[15px] font-normal leading-[1.75em] tracking-[-0.04em]">
+        <section className="bg-surface py-11">
+          <div className="flex flex-col gap-4 w-full">
+            <h2 className="text-center text-heading">마음 전하기</h2>
+            <p className="text-center text-body">
               축하 마음을 전하고 싶으신 분들은{`\n`}
               아래 계좌를 확인해주세요.
             </p>
           </div>
-          <div className="mt-[15px] flex flex-col items-center gap-[15px]">
+          <div className="mt-4 flex flex-col items-center gap-4">
             <BankAccounts
               label="신랑측"
               accounts={GROOM_ACCOUNTS}
@@ -289,7 +258,7 @@ export default async function Home() {
         </section>
 
         {/* Share */}
-        <section className="py-[35px]">
+        <section className="py-9">
           <KakaoShare
             siteUrl={SITE_URL}
             address={PLACE_ADDRESS}

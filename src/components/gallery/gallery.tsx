@@ -51,7 +51,7 @@ export default function Gallery({ images }: { images: string[] }) {
           {images.map((src, i) => (
             <CarouselItem key={src} className="basis-full">
               <div
-                className="relative w-full aspect-[3/4] cursor-pointer"
+                className="relative w-full aspect-[2/3] cursor-pointer"
                 onClick={() => setFullscreenIndex(i)}
               >
                 <Image
@@ -84,7 +84,7 @@ export default function Gallery({ images }: { images: string[] }) {
 
       <Button
         variant="outline"
-        className="w-full"
+        className="w-full bg-black text-white"
         onClick={() => setDialogOpen(true)}
       >
         사진 전체보기
@@ -97,7 +97,7 @@ export default function Gallery({ images }: { images: string[] }) {
             {images.map((src, i) => (
               <div
                 key={src}
-                className="relative aspect-[3/4] cursor-pointer"
+                className="relative aspect-[2/3] cursor-pointer"
                 onClick={() => handleThumbnailClick(i)}
               >
                 <Image
