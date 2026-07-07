@@ -45,7 +45,7 @@ export default function Gallery({ images }: { images: string[] }) {
       <Carousel
         setApi={setApi}
         opts={{ loop: true }}
-        plugins={[Autoplay({ delay: 2000, stopOnInteraction: true })]}
+        plugins={[Autoplay({ delay: 3000, stopOnInteraction: true })]}
       >
         <CarouselContent>
           {images.map((src, i) => (

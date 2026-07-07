@@ -7,31 +7,47 @@ import BankAccounts, {
 import KakaoShare from '@/components/kakao-share/kakao-share';
 import Map from '@/components/map/map';
 import WeddingCalendar from '@/components/calendar/calendar';
-import { Hero } from '@/components/hero/hero';
+import Image from 'next/image';
 
-const GALLERY_IMAGES = [
-  '/gallery-example-1.png',
-  '/gallery-example-2.png',
-  '/gallery-example-3.png',
-];
+const GALLERY_IMAGES = Array.from(
+  { length: 20 },
+  (_, i) => `/gallery/img_${i + 1}.webp`
+);
 
 const GROOM_ACCOUNTS: BankAccount[] = [
-  { name: '신랑', bank: '신한', account: '110123456789', holder: '김한율' },
+  {
+    name: '신랑',
+    bank: '기업',
+    account: '539-024812-01-016',
+    holder: '이한율',
+  },
+  {
+    name: '신랑 아버지',
+    bank: '농협',
+    account: '100092-52-103695',
+    holder: '이경복',
+  },
   {
     name: '신랑 어머니',
-    bank: '국민',
-    account: '220123456789',
-    holder: '이순자',
+    bank: '농협',
+    account: '221026-56-023504',
+    holder: '손재희',
   },
 ];
 
 const BRIDE_ACCOUNTS: BankAccount[] = [
-  { name: '신부', bank: '우리', account: '330123456789', holder: '박지연' },
+  { name: '신부', bank: '신한', account: '110-611-439125', holder: '김지연' },
+  {
+    name: '신부 아버지',
+    bank: '신한',
+    account: '110-529-874250',
+    holder: '김수헌',
+  },
   {
     name: '신부 어머니',
-    bank: '농협',
-    account: '440123456789',
-    holder: '최영희',
+    bank: '신한',
+    account: '110-071-896642',
+    holder: '김종옥',
   },
 ];
 
@@ -47,7 +63,7 @@ const GROOM_NAME = '이한율';
 const BRIDE_NAME = '김지연';
 const KAKAO_SHARE_TITLE = '결혼식에 초대합니다';
 const KAKAO_SHARE_DESCRIPTION = `${GROOM_NAME}과 ${BRIDE_NAME}의 결혼식에 초대합니다. 함께 축하해주세요!`;
-const KAKAO_SHARE_IMAGE_URL = `${SITE_URL}/gallery-example-1.png`;
+const KAKAO_SHARE_IMAGE_URL = `${SITE_URL}/ogimage_kakao.png`;
 
 const WEDDING_DATE = new Date(WEDDING_AT);
 const PAD = (n: number) => String(n).padStart(2, '0');
@@ -74,13 +90,13 @@ export default async function Home() {
     <main className="flex-1 w-full bg-[#050505] text-[#111]">
       <div className="mx-auto w-full max-w-[760px] border border-[#d9d9d9] bg-white">
         <div className="px-8 py-16 sm:px-14">
-          <Hero
-            groomName={GROOM_NAME}
-            brideName={BRIDE_NAME}
-            dateSpaced={DATE_SPACED}
-            weekday={WEEKDAY}
-            timeStr={TIME_STR}
-            placeName={PLACE_NAME}
+          <Image
+            src="/hero.png"
+            alt={`${BRIDE_NAME}-${GROOM_NAME}`}
+            fill
+            priority
+            sizes="(max-width: 640px) 100vw, 560px"
+            className="object-contain"
           />
         </div>
 

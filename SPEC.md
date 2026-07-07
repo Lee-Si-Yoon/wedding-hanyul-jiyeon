@@ -11,7 +11,6 @@
 - Bank Accounts → [Spec](./src/components/bank-accounts/SPEC.md)
 - RSVP Form → [Spec](./src/components/rsvp-form/SPEC.md)
 - Kakao Share → [Spec](./src/components/kakao-share/SPEC.md)
-- Hero → [Spec](./src/components/hero/SPEC.md)
 - RSVP Toggle → [Spec](./src/components/rsvp-toggle/SPEC.md)
 - RSVP List → [Spec](./src/components/rsvp-list/SPEC.md)
 
