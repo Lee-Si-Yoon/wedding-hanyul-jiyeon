@@ -19,19 +19,32 @@ export default function BankAccounts({
   label,
   accounts,
   children,
+  variant = 'groom',
 }: {
   label: string;
   accounts: BankAccount[];
   children: React.ReactNode;
+  variant?: 'groom' | 'bride';
 }) {
   async function copyAccount(text: string) {
     await navigator.clipboard.writeText(text);
     window.alert('복사되었습니다');
   }
 
+  // Figma: groom=#024BD0(blue), bride=#FEF400(yellow)
+  const bgColor = variant === 'groom' ? 'bg-[#024BD0]' : 'bg-[#FEF400]';
+  const textColor = variant === 'groom' ? 'text-white' : 'text-black';
+
   return (
     <Dialog>
-      <DialogTrigger render={<Button variant="outline" className="w-full" />}>
+      <DialogTrigger
+        render={
+          <Button
+            variant="outline"
+            className={`w-full ${bgColor} ${textColor}`}
+          />
+        }
+      >
         {children}
       </DialogTrigger>
       <DialogContent>
@@ -46,7 +59,7 @@ export default function BankAccounts({
                 <div className="font-medium">
                   {a.name} ({a.holder})
                 </div>
-                <div className="text-sm text-muted-foreground">
+                <div className="text-sm text-black/60">
                   {a.bank} {a.account}
                 </div>
               </div>

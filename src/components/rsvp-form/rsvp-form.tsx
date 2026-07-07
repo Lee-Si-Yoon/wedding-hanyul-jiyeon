@@ -40,9 +40,9 @@ export default function RsvpForm({ enabled }: { enabled: boolean }) {
   }
 
   return (
-    <div className="border-y border-foreground py-7">
+    <>
       {!enabled && (
-        <p className="mb-5 text-center text-sm text-muted-foreground">
+        <p className="mb-5 text-center text-sm text-black/50">
           지금은 참석여부 전달을 받고 있지 않습니다
         </p>
       )}
@@ -51,10 +51,11 @@ export default function RsvpForm({ enabled }: { enabled: boolean }) {
         className="disabled:cursor-not-allowed disabled:opacity-60"
       >
         <form onSubmit={handleSubmit}>
-          <div className="space-y-6">
-            <div>
-              <span className="text-sm font-semibold">
-                어느 쪽 손님이신가요
+          <div className="space-y-[10px]">
+            {/* Side select */}
+            <div className="flex flex-col items-center">
+              <span className="text-center">
+                신랑 · 신부 측을 선택해 주세요.
               </span>
               <RadioGroup
                 value={side}
@@ -63,38 +64,40 @@ export default function RsvpForm({ enabled }: { enabled: boolean }) {
               >
                 <Label
                   htmlFor="groom"
-                  className={`flex h-12 cursor-pointer items-center justify-center border text-base transition-colors ${
+                  className={`flex h-12 cursor-pointer items-center justify-center border text-center ${
                     side === 'groom'
-                      ? 'border-foreground bg-foreground text-background'
-                      : 'border-border bg-background'
+                      ? 'border-white bg-black text-white'
+                      : 'border-black bg-white text-black'
                   }`}
                 >
                   <RadioGroupItem
                     value="groom"
                     id="groom"
-                    className="sr-only"
+                    className="sr-only first:hidden"
                   />
                   신랑측
                 </Label>
                 <Label
                   htmlFor="bride"
-                  className={`flex h-12 cursor-pointer items-center justify-center border text-base transition-colors ${
+                  className={`flex h-12 cursor-pointer items-center justify-center border text-center ${
                     side === 'bride'
-                      ? 'border-foreground bg-foreground text-background'
-                      : 'border-border bg-background'
+                      ? 'border-white bg-black text-white'
+                      : 'border-black bg-white text-black'
                   }`}
                 >
                   <RadioGroupItem
                     value="bride"
                     id="bride"
-                    className="sr-only"
+                    className="sr-only first:hidden"
                   />
                   신부측
                 </Label>
               </RadioGroup>
             </div>
-            <div>
-              <Label htmlFor="name" className="font-semibold">
+
+            {/* Name */}
+            <div className="flex flex-col items-center">
+              <Label htmlFor="name" className="text-center">
                 이름
               </Label>
               <Input
@@ -102,20 +105,25 @@ export default function RsvpForm({ enabled }: { enabled: boolean }) {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-                className="mt-2"
-                placeholder="성함을 입력해 주세요"
+                placeholder="성함을 입력해 주세요."
+                className="border-black bg-white text-center"
               />
             </div>
-            <div>
-              <Label htmlFor="meal" className="font-semibold">
+
+            {/* Meal */}
+            <div className="flex flex-col items-center">
+              <Label htmlFor="meal" className="text-center">
                 식사 여부
               </Label>
               <Select
                 value={meal}
                 onValueChange={(v) => setMeal(v as 'yes' | 'no' | 'undecided')}
               >
-                <SelectTrigger id="meal" className="mt-2 w-full">
-                  <SelectValue placeholder="선택해 주세요" />
+                <SelectTrigger
+                  id="meal"
+                  className="w-full border-black bg-white [&>svg]:hidden"
+                >
+                  <SelectValue placeholder="선택해 주세요." />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="yes">식사함</SelectItem>
@@ -124,9 +132,11 @@ export default function RsvpForm({ enabled }: { enabled: boolean }) {
                 </SelectContent>
               </Select>
             </div>
-            <div>
-              <Label htmlFor="count" className="font-semibold">
-                참석 인원
+
+            {/* Count */}
+            <div className="flex flex-col items-center">
+              <Label htmlFor="count" className="text-center">
+                본인을 포함한 참석 인원을 입력해 주세요.
               </Label>
               <Input
                 id="count"
@@ -135,23 +145,22 @@ export default function RsvpForm({ enabled }: { enabled: boolean }) {
                 value={count}
                 onChange={(e) => setCount(Number(e.target.value))}
                 required
-                className="mt-2"
+                className="border-black bg-white text-center"
               />
-              <p className="mt-2 text-sm text-muted-foreground">
-                본인을 포함한 인원입니다.
-              </p>
             </div>
+
+            {/* Submit */}
             <Button
               type="submit"
               size="lg"
-              className="w-full"
               disabled={!enabled || pending}
+              className="w-full bg-black text-white"
             >
               {pending ? '제출 중...' : '제출하기'}
             </Button>
           </div>
         </form>
       </fieldset>
-    </div>
+    </>
   );
 }

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Script from 'next/script';
 import { Button } from '@/components/ui/button';
-import { LockIcon, UnlockIcon, MapPinIcon, NavigationIcon } from 'lucide-react';
+import { LockIcon, UnlockIcon } from 'lucide-react';
 
 declare global {
   interface Window {
@@ -129,7 +129,7 @@ export default function Map({
       <div className="flex gap-2 mt-3">
         <Button
           variant="outline"
-          className="flex-1"
+          className="flex-1 bg-[#1EC800]"
           nativeButton={false}
           render={
             <a
@@ -139,12 +139,11 @@ export default function Map({
             />
           }
         >
-          <MapPinIcon className="size-4" />
           네이버 지도
         </Button>
         <Button
           variant="outline"
-          className="flex-1"
+          className="flex-1 bg-[#FAE100]"
           nativeButton={false}
           render={
             <a
@@ -154,7 +153,6 @@ export default function Map({
             />
           }
         >
-          <NavigationIcon className="size-4" />
           카카오 지도
         </Button>
       </div>

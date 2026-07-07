@@ -61,129 +61,137 @@ const NMAP_PLACE_ID = 1950859773;
 const KMAP_PLACE_ID = 843214968;
 const GROOM_NAME = '이한율';
 const BRIDE_NAME = '김지연';
-const KAKAO_SHARE_TITLE = '결혼식에 초대합니다';
-const KAKAO_SHARE_DESCRIPTION = `${GROOM_NAME}과 ${BRIDE_NAME}의 결혼식에 초대합니다. 함께 축하해주세요!`;
+const KAKAO_SHARE_TITLE = '지연 & 한율 결혼식에 초대합니다.';
+const KAKAO_SHARE_DESCRIPTION = '메종디탈리 2026년 9월 5일 오후 5시 30분';
 const KAKAO_SHARE_IMAGE_URL = `${SITE_URL}/ogimage_kakao.png`;
-
-const WEDDING_DATE = new Date(WEDDING_AT);
-const PAD = (n: number) => String(n).padStart(2, '0');
-const DATE_NUMERIC = `${WEDDING_DATE.getFullYear()}.${PAD(
-  WEDDING_DATE.getMonth() + 1
-)}.${PAD(WEDDING_DATE.getDate())}`;
-const DATE_KOREAN = `${WEDDING_DATE.getFullYear()}년 ${
-  WEDDING_DATE.getMonth() + 1
-}월 ${WEDDING_DATE.getDate()}일`;
-const DATE_SPACED = `${WEDDING_DATE.getFullYear()} · ${PAD(
-  WEDDING_DATE.getMonth() + 1
-)} · ${PAD(WEDDING_DATE.getDate())}`;
-const WEEKDAY = WEDDING_DATE.toLocaleDateString('ko-KR', { weekday: 'long' });
-const HOUR24 = WEDDING_DATE.getHours();
-const TIME_STR = `${HOUR24 < 12 ? '오전' : '오후'} ${
-  HOUR24 % 12 === 0 ? 12 : HOUR24 % 12
-}:${PAD(WEDDING_DATE.getMinutes())}`;
 
 export default async function Home() {
   const uiFlag = await getUiFlag('rsvp');
   const enabled = uiFlag?.enabled ?? false;
 
   return (
-    <main className="flex-1 w-full bg-[#050505] text-[#111]">
-      <div className="mx-auto w-full max-w-[760px] border border-[#d9d9d9] bg-white">
-        <div className="px-8 py-16 sm:px-14">
+    <main className="flex-1 w-full bg-white text-[#000] font-['Pretendard']">
+      <div className="mx-auto w-full max-w-[375px]">
+        {/* Hero */}
+        <div className="relative w-full h-[496px]">
           <Image
             src="/hero.png"
             alt={`${BRIDE_NAME}-${GROOM_NAME}`}
             fill
             priority
-            sizes="(max-width: 640px) 100vw, 560px"
-            className="object-contain"
+            sizes="375px"
+            className="object-cover"
           />
         </div>
 
-        <section
-          aria-label="초대의 글"
-          className="px-10 py-16 text-center sm:px-16"
-        >
-          <p className="text-[clamp(1.9rem,8vw,3.1rem)] font-medium leading-none tracking-[0.08em]">
-            INDEFINITELY
-          </p>
-          <h2 className="mt-5 text-[clamp(1.8rem,7vw,3rem)] font-normal leading-tight tracking-normal">
-            As long as we&apos;re together.
-          </h2>
-          <div className="mx-auto mt-16 max-w-[36rem] space-y-7 text-[1.05rem] leading-[2.05] sm:text-[1.2rem]">
-            <p>
-              유난히도 뜨거운 어느 6월,
-              <br />
-              아인슈타인을 좋아하는 공학도와
-              <br />
-              데이비드 호크니를 좋아하는 미술학도가 만나,
-              <br />
-              풋내음이 가득한 날, 이곳에서 새로운 시작을 하려 합니다.
-            </p>
-            <p>
-              여름의 끝자락, 가을의 시작점에서
-              <br />
-              여유로운 저녁을 함께해 주세요.
-              <br />
-              드레스코드는 없지만, 밝은 차림으로 함께해 주신다면
-              <br />
-              그날의 풍경이 더욱 따뜻하게 빛날 것 같습니다.
-            </p>
+        {/* Invitation text + Sketching Our Future */}
+        <section className="flex flex-col items-center gap-12 py-[25px]">
+          <div className="flex items-center justify-center px-12">
+            <Image
+              src="/title_sketching_our_future.svg"
+              alt="Sketching Our Future"
+              width={198}
+              height={87}
+              style={{ width: 'auto', height: 'auto' }}
+              priority
+            />
           </div>
-          <div className="mx-auto mt-14 grid max-w-[28rem] grid-cols-[1fr_auto_1fr] gap-x-5 gap-y-3 text-[1.05rem] leading-relaxed sm:text-[1.2rem]">
-            <span>이경복 손재희의</span>
-            <span>장남</span>
-            <strong className="font-medium">이한율</strong>
-            <span>김수현 김종욱의</span>
-            <span>차녀</span>
-            <strong className="font-medium">김지연</strong>
-          </div>
-          <div className="mt-20 text-[0.95rem] leading-[1.9] sm:text-[1.05rem]">
-            <p>
-              {DATE_KOREAN} {WEEKDAY} {TIME_STR}
+          <div className="flex flex-col items-center gap-[55px] px-0 pb-[25px]">
+            <p className="w-[252px] text-center text-[15px] font-medium leading-[2.96em] tracking-[-0.04em]">
+              종이 냄새를 좋아하는 공학도와{`\n`}
+              물감 냄새를 좋아하는 미술학도가 만나,{`\n`}한 폭의 그림을 그려
+              나가려 합니다.{`\n`}
+              색이 채워지는 순간을 함께해 주세요.
             </p>
-            <p>{PLACE_NAME} (Maison d&apos;Italie)</p>
-            <p>{PLACE_ADDRESS}</p>
+            <div className="flex flex-col items-center gap-[11px]">
+              <div className="flex flex-col items-center justify-center gap-[10px]">
+                <span className="text-center text-[15px] font-medium leading-[1.4em] tracking-[-0.04em]">
+                  이경복 손재희 의
+                </span>
+                <span className="text-center text-[15px] font-normal leading-[1.4em] tracking-[-0.04em]">
+                  장남
+                </span>
+                <span className="text-center text-[15px] font-medium leading-[1.4em] tracking-[-0.04em]">
+                  이한율
+                </span>
+              </div>
+              <div className="flex flex-col items-center justify-center gap-[10px]">
+                <span className="text-center text-[15px] font-medium leading-[1.4em] tracking-[-0.04em]">
+                  김수헌 김종옥 의
+                </span>
+                <span className="text-center text-[15px] font-normal leading-[1.4em] tracking-[-0.04em]">
+                  차녀
+                </span>
+                <span className="text-center text-[15px] font-medium leading-[1.4em] tracking-[-0.04em]">
+                  김지연
+                </span>
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* Content */}
-        <div className="mx-auto w-full max-w-[640px] px-8 sm:px-10">
-          {/* 결혼식 일시 */}
-          <section
-            aria-labelledby="sec-when"
-            className="pt-[clamp(3rem,8vw,4.5rem)]"
-          >
-            <div className="section-heading">
-              <h2 id="sec-when">결혼식 일시</h2>
-            </div>
-            <WeddingCalendar targetDate={WEDDING_AT} />
-          </section>
+        {/* Gallery */}
+        <section className="flex flex-col items-center gap-[30px] py-[15px] pb-[63px]">
+          <div className="relative w-full h-[63px]">
+            <Image
+              src="/title_gallery.png"
+              alt="Gallery"
+              width={91}
+              height={36}
+              style={{ width: 'auto', height: 'auto' }}
+              className="absolute left-1/2 top-1/2 -translate-x-[20px] translate-y-[10px]"
+            />
+          </div>
+          <Gallery images={GALLERY_IMAGES} />
+        </section>
 
-          {/* 사진첩 */}
-          <section
-            aria-labelledby="sec-gallery"
-            className="pt-[clamp(3.5rem,10vw,5.5rem)]"
-          >
-            <div className="section-heading">
-              <h2 id="sec-gallery">사진첩</h2>
-            </div>
-            <Gallery images={GALLERY_IMAGES} />
-          </section>
-
-          {/* 오시는 길 */}
-          <section
-            aria-labelledby="sec-map"
-            className="pt-[clamp(3.5rem,10vw,5.5rem)]"
-          >
-            <div className="section-heading">
-              <h2 id="sec-map">오시는 길</h2>
-            </div>
-            <p className="mb-4 text-[0.95rem] leading-relaxed text-muted-foreground">
-              {PLACE_NAME}
-              <br />
-              {PLACE_ADDRESS}
+        {/* RSVP — #E9E9E9 bg */}
+        <section className="bg-[#E9E9E9] py-[45px] px-0">
+          <div className="px-[37px]">
+            <h2 className="text-center text-[21px] font-semibold leading-[1.47em] tracking-[-0.04em]">
+              참석 의사 전달
+            </h2>
+            <p className="mt-[18px] text-center text-[15px] font-normal leading-[1.75em] tracking-[-0.04em]">
+              축하의 마음으로 참석해 주실 모든 분을{`\n`}
+              정중히 모시고자 하오니,{`\n`}
+              참석 여부를 알려주시면 감사하겠습니다.
             </p>
+          </div>
+          <RsvpForm enabled={enabled} />
+        </section>
+
+        {/* Date */}
+        <section className="py-[40px]">
+          <div className="px-[37px]">
+            <h2 className="text-center text-[21px] font-semibold leading-[1.47em] tracking-[-0.04em]">
+              결혼식 일시
+            </h2>
+          </div>
+          <div className="mt-[31px] flex flex-col items-center gap-[31px]">
+            <p className="text-center text-[15px] font-normal leading-[1.9em] tracking-[-0.04em]">
+              2026년 9월 5일 토요일 오후 5시 30분{`\n`}
+              메종디탈리 (Maison d&apos;Italie)
+            </p>
+            <p className="text-center text-[15px] font-normal leading-[2.96em] tracking-[-0.04em]">
+              밝은 차림으로 그날의 저녁을 빛내주세요.
+            </p>
+          </div>
+          <div className="mt-[35px]">
+            <WeddingCalendar targetDate={WEDDING_AT} />
+          </div>
+        </section>
+
+        {/* Directions */}
+        <section className="py-[15px] pb-[45px]">
+          <div className="px-[37px]">
+            <h2 className="text-center text-[21px] font-semibold leading-[1.47em] tracking-[-0.04em]">
+              오시는 길
+            </h2>
+            <p className="mt-[18px] text-center text-[15px] font-normal leading-[1.75em] tracking-[-0.04em]">
+              메종 디탈리{`\n`}경기도 성남시 수정구 시흥동 63-5
+            </p>
+          </div>
+          <div className="mt-[14px]">
             <Map
               lat={PLACE_LAT}
               lng={PLACE_LNG}
@@ -191,102 +199,106 @@ export default async function Home() {
               nmapPlaceId={NMAP_PLACE_ID}
               kmapPlaceId={KMAP_PLACE_ID}
             />
-            <div className="mt-8 space-y-7 text-[0.95rem] leading-[1.85]">
-              <div>
-                <h3 className="mb-2 text-base font-semibold">버스</h3>
-                <p>
-                  성남농협영농종합지원센터 (버스노선 9800 / 9400 / 9408) 에서
-                  도보 5분 거리에 메종디탈리가 위치해 있습니다.
+          </div>
+          {/* Detail sections */}
+          <div className="mt-[15px] flex flex-col gap-0">
+            <div className="px-0 py-[13px]">
+              <h3 className="text-[15px] font-semibold leading-[1.47em] tracking-[-0.04em]">
+                주소
+              </h3>
+              <p className="text-[15px] font-normal leading-[1.75em] tracking-[-0.04em]">
+                메종디탈리{`\n`}경기 성남시 수정구 설개로 39{`\n`}T. 02-579-6166
+                / 02-579-6165
+              </p>
+            </div>
+            <div className="px-0 py-[13px]">
+              <h3 className="text-[15px] font-semibold leading-[1.47em] tracking-[-0.04em]">
+                셔틀
+              </h3>
+              <div className="flex flex-col gap-[5px]">
+                <p className="text-[15px] font-normal leading-[1.75em] tracking-[-0.04em]">
+                  수서역 6번 출구에서{`\n`}
+                  메종디탈리 요원의 안내에 따라 7m 직진하면{`\n`}
+                  셔틀을 이용하실 수 있습니다.
                 </p>
-              </div>
-              <div>
-                <h3 className="mb-2 text-base font-semibold">셔틀</h3>
-                <p>
-                  수서역 3호선 6번 출구에서 나오는 방향으로 7m 직진하면
-                  메종디탈리 셔틀을 이용하실 수 있습니다.
-                  <br />
-                  예식 시간 기준 1시간 전부터 총 4시간 운행됩니다.
-                </p>
-              </div>
-              <div>
-                <h3 className="mb-2 text-base font-semibold">
-                  식장 주소 및 연락처
-                </h3>
-                <p>
-                  {PLACE_NAME} (Maison d&apos;Italie) {PLACE_ADDRESS}
-                  <br />
-                  02-579-6166 / 02-579-6165
-                </p>
-              </div>
-              <div>
-                <h3 className="mb-2 text-base font-semibold">주차장</h3>
-                <p>
-                  식장 주차장과 식장 입구 맞은편 교회 주차장을 이용하실 수
-                  있습니다. 주차자리가 협소하여 대중교통과 셔틀 이용을
-                  권장드립니다.
+                <p className="text-[15px] font-normal leading-[1.75em] tracking-[-0.04em]">
+                  <span className="font-semibold">
+                    예식 시간 기준 1시간 전부터 총 4시간 운행됩니다.
+                  </span>
+                  {`\n`}( 운행시간 16:30~20:30 )
                 </p>
               </div>
             </div>
-          </section>
-
-          {/* 마음 전하기 */}
-          <section
-            aria-labelledby="sec-gift"
-            className="pt-[clamp(3.5rem,10vw,5.5rem)]"
-          >
-            <div className="section-heading">
-              <h2 id="sec-gift">마음 전하기</h2>
+            <div className="px-0 py-[13px]">
+              <h3 className="text-[15px] font-semibold leading-[1.47em] tracking-[-0.04em]">
+                버스
+              </h3>
+              <p className="text-[15px] font-normal leading-[1.75em] tracking-[-0.04em]">
+                성남농협영농종합지원센터 하차 도보5분 거리{`\n`}
+                (노선 9800 / 9400 / 9408)
+              </p>
             </div>
-            <p className="mb-5 text-[0.95rem] leading-relaxed text-muted-foreground">
-              축하 마음을 전하고 싶으신 분들은 아래 계좌를 확인해 주세요.
-            </p>
-            <div className="space-y-3">
-              <BankAccounts label="신랑측" accounts={GROOM_ACCOUNTS}>
-                신랑측 계좌번호 보기
-              </BankAccounts>
-              <BankAccounts label="신부측" accounts={BRIDE_ACCOUNTS}>
-                신부측 계좌번호 보기
-              </BankAccounts>
+            <div className="px-0 py-[13px]">
+              <h3 className="text-[15px] font-semibold leading-[1.47em] tracking-[-0.04em]">
+                주차
+              </h3>
+              <p className="text-[15px] font-normal leading-[1.75em] tracking-[-0.04em]">
+                메종디탈리 주차장을 이용하실 수 있습니다.{`\n`}
+                주차 자리가 협소하여{`\n`}
+                대중교통과 셔틀 이용을 권장드립니다.
+              </p>
             </div>
-          </section>
-
-          {/* 참석여부 전달하기 */}
-          <section
-            aria-labelledby="sec-rsvp"
-            className="pt-[clamp(3.5rem,10vw,5.5rem)]"
-          >
-            <div className="section-heading">
-              <h2 id="sec-rsvp">참석여부 전달하기</h2>
+            <div className="px-0 py-[13px]">
+              <h3 className="text-[15px] font-semibold leading-[1.47em] tracking-[-0.04em]">
+                드레스 코드
+              </h3>
+              <p className="text-[15px] font-normal leading-[1.75em] tracking-[-0.04em]">
+                밝은 차림으로 그날의 저녁을 빛내주세요.
+              </p>
             </div>
-            <RsvpForm enabled={enabled} />
-          </section>
+          </div>
+        </section>
 
-          {/* Share */}
-          <section className="pt-[clamp(3.5rem,10vw,5.5rem)]">
-            <KakaoShare
-              siteUrl={SITE_URL}
-              address={PLACE_ADDRESS}
-              addressTitle={PLACE_NAME}
-              title={KAKAO_SHARE_TITLE}
-              description={KAKAO_SHARE_DESCRIPTION}
-              imageUrl={KAKAO_SHARE_IMAGE_URL}
-            />
-          </section>
+        {/* Gift — #E9E9E9 bg */}
+        <section className="bg-[#E9E9E9] py-[45px]">
+          <div className="flex flex-col gap-[18px] w-[375px]">
+            <h2 className="text-center text-[21px] font-semibold leading-[1.47em] tracking-[-0.04em]">
+              마음 전하기
+            </h2>
+            <p className="text-center text-[15px] font-normal leading-[1.75em] tracking-[-0.04em]">
+              축하 마음을 전하고 싶으신 분들은{`\n`}
+              아래 계좌를 확인해주세요.
+            </p>
+          </div>
+          <div className="mt-[15px] flex flex-col items-center gap-[15px]">
+            <BankAccounts
+              label="신랑측"
+              accounts={GROOM_ACCOUNTS}
+              variant="groom"
+            >
+              신랑측 계좌번호 보기
+            </BankAccounts>
+            <BankAccounts
+              label="신부측"
+              accounts={BRIDE_ACCOUNTS}
+              variant="bride"
+            >
+              신부측 계좌번호 보기
+            </BankAccounts>
+          </div>
+        </section>
 
-          {/* Footer */}
-          <footer className="border-t border-border pt-12 pb-16 text-center">
-            <p className="text-lg font-medium text-brand tracking-[-0.01em]">
-              {GROOM_NAME} · {BRIDE_NAME}
-            </p>
-            <p className="mt-3 text-sm tabular-nums text-muted-foreground">
-              {DATE_NUMERIC} {WEEKDAY} {TIME_STR}
-            </p>
-            <p className="mt-1 text-sm text-muted-foreground">{PLACE_NAME}</p>
-            <p className="mt-8 text-xs tracking-[0.12em] text-muted-foreground">
-              찾아주셔서 감사합니다
-            </p>
-          </footer>
-        </div>
+        {/* Share */}
+        <section className="py-[35px]">
+          <KakaoShare
+            siteUrl={SITE_URL}
+            address={PLACE_ADDRESS}
+            addressTitle={PLACE_NAME}
+            title={KAKAO_SHARE_TITLE}
+            description={KAKAO_SHARE_DESCRIPTION}
+            imageUrl={KAKAO_SHARE_IMAGE_URL}
+          />
+        </section>
       </div>
     </main>
   );
