@@ -129,7 +129,7 @@ export default function Map({
       <div className="flex gap-2 mt-6">
         <Button
           variant="outline"
-          className="flex-1 bg-[#1EC800]"
+          className="flex-1 bg-[#1EC800] h-13 text-button!"
           nativeButton={false}
           render={
             <a
@@ -143,7 +143,7 @@ export default function Map({
         </Button>
         <Button
           variant="outline"
-          className="flex-1 bg-[#FAE100]"
+          className="flex-1 bg-[#FAE100] h-13 text-button!"
           nativeButton={false}
           render={
             <a

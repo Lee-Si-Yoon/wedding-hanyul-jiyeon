@@ -85,7 +85,7 @@ export default async function Home() {
         </div>
 
         {/* Invitation text + Sketching Our Future */}
-        <section className="flex flex-col items-center gap-12 pt-6 pb-12 bg-white">
+        <section className="flex flex-col items-center gap-12 pt-8 pb-12 bg-white">
           <Image
             src="/title_sketching_our_future.svg"
             alt="Sketching Our Future"
@@ -95,7 +95,7 @@ export default async function Home() {
             priority
           />
           <div className="flex flex-col items-center gap-14">
-            <p className="text-center text-body-spaced">
+            <p className="text-center text-body-spaced font-medium mt-3 trim-both">
               종이 냄새를 좋아하는 공학도와{`\n`}
               물감 냄새를 좋아하는 미술학도가 만나,{`\n`}한 폭의 그림을 그려
               나가려 합니다.{`\n`}
@@ -103,21 +103,25 @@ export default async function Home() {
             </p>
             <div className="flex flex-col items-center gap-3">
               <div className="flex items-center justify-center gap-2.5">
-                <span className="text-name">이경복 손재희 의</span>
-                <span className="text-body">장남</span>
-                <span className="text-name">이한율</span>
+                <span className="text-name leading-[140%]">
+                  이경복 손재희 의
+                </span>
+                <span className="text-body leading-[140%]">장남</span>
+                <span className="text-name leading-[140%]">이한율</span>
               </div>
               <div className="flex items-center justify-center gap-2.5">
-                <span className="text-name">김수헌 김종옥 의</span>
-                <span className="text-body">차녀</span>
-                <span className="text-name">김지연</span>
+                <span className="text-name leading-[140%]">
+                  김수헌 김종옥 의
+                </span>
+                <span className="text-body leading-[140%]">차녀</span>
+                <span className="text-name leading-[140%]">김지연</span>
               </div>
             </div>
           </div>
         </section>
 
         {/* Gallery */}
-        <section className="flex flex-col items-center gap-8 pb-16 px-8 bg-white">
+        <section className="flex flex-col items-center gap-y-5 pb-16 px-8 bg-white">
           <Image
             src="/title_gallery.png"
             alt="Gallery"
@@ -128,9 +132,9 @@ export default async function Home() {
         </section>
 
         {/* RSVP — #E9E9E9 bg */}
-        <section className="flex flex-col gap-y-4 bg-surface py-11 px-8">
-          <h2 className="text-center text-heading">참석 의사 전달</h2>
-          <p className="text-center text-body pb-2">
+        <section className="flex flex-col bg-surface py-11 px-8">
+          <h2 className="text-center text-heading mt-3">참석 의사 전달</h2>
+          <p className="text-center text-body mt-4.5 mb-3">
             축하의 마음으로 참석해 주실 모든 분을{`\n`}
             정중히 모시고자 하오니,{`\n`}
             참석 여부를 알려주시면 감사하겠습니다.
@@ -140,22 +144,22 @@ export default async function Home() {
 
         {/* Date */}
         <section className="bg-white py-10 px-8">
-          <h2 className="text-center text-heading">결혼식 일시</h2>
+          <h2 className="text-center text-heading mt-3">결혼식 일시</h2>
 
-          <p className="text-center text-body-loose pt-4">
+          <p className="text-center text-body-loose trim-both mt-4.5">
             2026년 9월 5일 토요일 오후 5시 30분{`\n`}
             메종디탈리 (Maison d&apos;Italie)
           </p>
-          <p className="text-center text-body-spaced pt-4 pb-6">
+          <p className="text-center text-body-spaced trim-both mt-7.5 mb-12.5">
             밝은 차림으로 그날의 저녁을 빛내주세요.
           </p>
           <WeddingCalendar targetDate={WEDDING_AT} />
         </section>
 
         {/* Directions */}
-        <section className="py-6 pb-12 px-8 bg-white">
+        <section className="py-5.5 pb-12 px-8 bg-white">
           <h2 className="text-center text-heading">오시는 길</h2>
-          <p className="text-center text-body my-4">
+          <p className="text-center text-body mt-4.5 mb-6.5">
             메종 디탈리{`\n`}경기도 성남시 수정구 시흥동 63-5
           </p>
           <Map
@@ -168,7 +172,7 @@ export default async function Home() {
         </section>
 
         {/* Detail sections */}
-        <section className="pt-4 pb-14 px-8 bg-white text-center flex flex-col gap-y-6">
+        <section className="pt-6 pb-14 px-8 bg-white text-center flex flex-col gap-y-6.5">
           <div>
             <h3 className="text-label">주소</h3>
             <p className="text-body">
@@ -214,8 +218,8 @@ export default async function Home() {
         </section>
 
         {/* Gift — #E9E9E9 bg */}
-        <section className="bg-surface py-11 px-8">
-          <div className="flex flex-col gap-4">
+        <section className="bg-surface py-11.5 px-8">
+          <div className="flex flex-col gap-4.5">
             <h2 className="text-center text-heading">마음 전하기</h2>
             <p className="text-center text-body">
               축하 마음을 전하고 싶으신 분들은{`\n`}
@@ -241,7 +245,7 @@ export default async function Home() {
         </section>
 
         {/* Share */}
-        <section className="py-9 px-8 bg-white">
+        <section className="py-8.5 px-8 bg-white">
           <KakaoShare
             siteUrl={SITE_URL}
             address={PLACE_ADDRESS}

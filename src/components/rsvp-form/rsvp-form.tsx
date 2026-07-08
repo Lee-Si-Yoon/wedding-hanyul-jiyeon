@@ -67,12 +67,14 @@ export default function RsvpForm({ enabled }: { enabled: boolean }) {
       )}
       <fieldset
         disabled={!enabled}
-        className="disabled:cursor-not-allowed disabled:opacity-60"
+        className="disabled:cursor-not-allowed disabled:opacity-60 mt-3.5 pb-1"
       >
-        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-6.5">
           {/* Side select */}
-          <div className="flex flex-col items-center gap-y-3">
-            <span className="text-center">신랑 · 신부 측을 선택해 주세요.</span>
+          <div className="flex flex-col items-center gap-y-2.5">
+            <span className="text-center text-body">
+              신랑 · 신부 측을 선택해 주세요.
+            </span>
             <RadioGroup
               value={side}
               onValueChange={(v) => setSide(v as 'groom' | 'bride')}
@@ -80,7 +82,7 @@ export default function RsvpForm({ enabled }: { enabled: boolean }) {
             >
               <Label
                 htmlFor="groom"
-                className={`flex h-12 cursor-pointer items-center justify-center border text-center text-body! ${
+                className={`flex h-13 cursor-pointer items-center justify-center border text-center text-body! ${
                   side === 'groom'
                     ? 'border-white bg-black text-white'
                     : 'border-black bg-white text-black'
@@ -95,7 +97,7 @@ export default function RsvpForm({ enabled }: { enabled: boolean }) {
               </Label>
               <Label
                 htmlFor="bride"
-                className={`flex h-12 cursor-pointer items-center justify-center border text-center text-body! ${
+                className={`flex h-13 cursor-pointer items-center justify-center border text-center text-body! ${
                   side === 'bride'
                     ? 'border-white bg-black text-white'
                     : 'border-black bg-white text-black'
@@ -112,7 +114,7 @@ export default function RsvpForm({ enabled }: { enabled: boolean }) {
           </div>
 
           {/* Name */}
-          <div className="flex flex-col items-center gap-y-3">
+          <div className="flex flex-col items-center gap-y-2.5">
             <Label htmlFor="name" className="text-center text-body!">
               이름
             </Label>
@@ -122,12 +124,12 @@ export default function RsvpForm({ enabled }: { enabled: boolean }) {
               onChange={(e) => setName(e.target.value)}
               required
               placeholder="성함을 입력해 주세요."
-              className="border-black bg-white text-center"
+              className="border-black bg-white text-center h-13 text-body! placeholder:text-black"
             />
           </div>
 
           {/* Meal */}
-          <div className="flex flex-col items-center gap-y-3">
+          <div className="flex flex-col items-center gap-y-2.5">
             <Label htmlFor="meal" className="text-center text-body!">
               식사 여부
             </Label>
@@ -141,9 +143,12 @@ export default function RsvpForm({ enabled }: { enabled: boolean }) {
               <SelectTrigger
                 ref={mealRef}
                 aria-invalid={mealInvalid || undefined}
-                className="w-full border-black bg-white [&>svg]:hidden justify-center text-center"
+                className="w-full border-black bg-white [&>svg]:hidden justify-center text-center h-13!"
               >
-                <SelectValue placeholder="선택해 주세요." />
+                <SelectValue
+                  placeholder="선택해 주세요."
+                  className="text-black text-body! flex-none"
+                />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="식사 예정">식사 예정</SelectItem>
@@ -154,7 +159,7 @@ export default function RsvpForm({ enabled }: { enabled: boolean }) {
           </div>
 
           {/* Count */}
-          <div className="flex flex-col items-center gap-y-3">
+          <div className="flex flex-col items-center gap-y-2.5">
             <Label htmlFor="count" className="text-center text-body!">
               본인을 포함한 참석 인원을 입력해 주세요.
             </Label>
@@ -165,16 +170,15 @@ export default function RsvpForm({ enabled }: { enabled: boolean }) {
               value={count}
               onChange={(e) => setCount(Number(e.target.value))}
               required
-              className="border-black bg-white text-center"
+              className="border-black bg-white text-center h-13"
             />
           </div>
 
           {/* Submit */}
           <Button
             type="submit"
-            size="lg"
             disabled={!enabled || pending}
-            className="w-full bg-black text-white"
+            className="w-full h-13 bg-black text-white"
           >
             {pending ? '제출 중...' : '제출하기'}
           </Button>

@@ -83,8 +83,7 @@ export default function Gallery({ images }: { images: string[] }) {
       </div>
 
       <Button
-        variant="outline"
-        className="w-full bg-black text-white"
+        className="w-full h-13 bg-black text-button! text-white"
         onClick={() => setDialogOpen(true)}
       >
         사진 전체보기

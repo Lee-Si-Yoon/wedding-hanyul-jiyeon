@@ -41,7 +41,7 @@ export default function BankAccounts({
         render={
           <Button
             variant="outline"
-            className={`w-full ${bgColor} ${textColor}`}
+            className={`w-full h-13 text-button! ${bgColor} ${textColor}`}
           />
         }
       >

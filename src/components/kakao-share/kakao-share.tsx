@@ -98,10 +98,9 @@ export default function KakaoShare({
         onLoad={handleLoad}
       />
       <Button
-        size="lg"
         onClick={handleShare}
         disabled={!ready}
-        className="w-full bg-black text-[#FEF400]"
+        className="w-full h-13 text-button! bg-black text-[#FEF400]"
       >
         카카오톡으로 공유하기
       </Button>
