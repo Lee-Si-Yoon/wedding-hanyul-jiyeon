@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { ko } from 'date-fns/locale';
-import { Calendar, CalendarDayButton } from '@/components/ui/calendar';
+import { Calendar } from '@/components/ui/calendar';
 
 const DAY_MS = 86_400_000;
 const HOUR_MS = 3_600_000;
@@ -55,27 +55,19 @@ export default function WeddingCalendar({
   const target = new Date(targetDate);
 
   return (
-    <div className="space-y-7">
-      <div className="flex justify-center">
+    <div className="space-y-6">
+      <div className="flex justify-center w-full">
         <Calendar
           mode="single"
           selected={target}
           onSelect={() => {}}
           defaultMonth={target}
           hideNavigation
-          captionLayout="label"
-          locale={ko}
-          className="pointer-events-none p-0 text-base [--cell-size:2.9rem] sm:[--cell-size:3.35rem] [&_.rdp-caption_label]:text-xl [&_.rdp-caption_label]:font-semibold [&_.rdp-weekday]:text-sm [&_.rdp-weekday]:font-medium"
-          components={{
-            DayButton: (props) => (
-              <CalendarDayButton
-                {...props}
-                tabIndex={-1}
-                locale={ko}
-                className="text-base sm:text-lg"
-              />
-            ),
+          classNames={{
+            month_caption: 'hidden',
           }}
+          locale={ko}
+          className="w-full pointer-events-none text-base"
         />
       </div>
       <DdayCountdown target={target} />

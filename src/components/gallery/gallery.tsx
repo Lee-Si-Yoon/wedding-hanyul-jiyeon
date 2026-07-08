@@ -51,7 +51,7 @@ export default function Gallery({ images }: { images: string[] }) {
           {images.map((src, i) => (
             <CarouselItem key={src} className="basis-full">
               <div
-                className="relative w-full aspect-[2/3] cursor-pointer"
+                className="relative w-full aspect-2/3 cursor-pointer"
                 onClick={() => setFullscreenIndex(i)}
               >
                 <Image
@@ -92,12 +92,11 @@ export default function Gallery({ images }: { images: string[] }) {
 
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
         <DialogContent className="max-w-2xl max-h-[85dvh]">
-          <DialogTitle>사진 전체보기</DialogTitle>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-2 overflow-y-auto">
             {images.map((src, i) => (
               <div
                 key={src}
-                className="relative aspect-[2/3] cursor-pointer"
+                className="relative aspect-2/3 cursor-pointer"
                 onClick={() => handleThumbnailClick(i)}
               >
                 <Image

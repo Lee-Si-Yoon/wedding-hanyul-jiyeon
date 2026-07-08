@@ -126,7 +126,7 @@ export default function Map({
         </Button>
         <div ref={mapRef} className="w-full h-64" />
       </div>
-      <div className="flex gap-2 mt-3">
+      <div className="flex gap-2 mt-6">
         <Button
           variant="outline"
           className="flex-1 bg-[#1EC800]"

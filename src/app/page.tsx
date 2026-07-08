@@ -70,10 +70,10 @@ export default async function Home() {
   const enabled = uiFlag?.enabled ?? false;
 
   return (
-    <main className="flex-1 w-full bg-white text-foreground font-sans">
-      <div className="mx-auto w-full max-w-[23.4375rem]">
+    <main className="flex-1 w-full text-foreground font-sans">
+      <div className="mx-auto w-full max-w-94">
         {/* Hero */}
-        <div className="relative w-full h-[31rem]">
+        <div className="relative w-full h-124">
           <Image
             src="/hero.png"
             alt={`${BRIDE_NAME}-${GROOM_NAME}`}
@@ -85,18 +85,16 @@ export default async function Home() {
         </div>
 
         {/* Invitation text + Sketching Our Future */}
-        <section className="flex flex-col items-center gap-12 py-6">
-          <div className="flex items-center justify-center px-12">
-            <Image
-              src="/title_sketching_our_future.svg"
-              alt="Sketching Our Future"
-              width={198}
-              height={87}
-              style={{ width: 'auto', height: 'auto' }}
-              priority
-            />
-          </div>
-          <div className="flex flex-col items-center gap-14 pb-6">
+        <section className="flex flex-col items-center gap-12 pt-6 pb-12 bg-white">
+          <Image
+            src="/title_sketching_our_future.svg"
+            alt="Sketching Our Future"
+            width={198}
+            height={87}
+            style={{ width: 'auto', height: 'auto' }}
+            priority
+          />
+          <div className="flex flex-col items-center gap-14">
             <p className="text-center text-body-spaced">
               종이 냄새를 좋아하는 공학도와{`\n`}
               물감 냄새를 좋아하는 미술학도가 만나,{`\n`}한 폭의 그림을 그려
@@ -105,134 +103,120 @@ export default async function Home() {
             </p>
             <div className="flex flex-col items-center gap-3">
               <div className="flex items-center justify-center gap-2.5">
-                <span className="text-center text-name">이경복 손재희 의</span>
-                <span className="text-center text-body">장남</span>
-                <span className="text-center text-name">이한율</span>
+                <span className="text-name">이경복 손재희 의</span>
+                <span className="text-body">장남</span>
+                <span className="text-name">이한율</span>
               </div>
               <div className="flex items-center justify-center gap-2.5">
-                <span className="text-center text-name">김수헌 김종옥 의</span>
-                <span className="text-center text-body">차녀</span>
-                <span className="text-center text-name">김지연</span>
+                <span className="text-name">김수헌 김종옥 의</span>
+                <span className="text-body">차녀</span>
+                <span className="text-name">김지연</span>
               </div>
             </div>
           </div>
         </section>
 
         {/* Gallery */}
-        <section className="flex flex-col items-center gap-8 py-4 pb-16">
-          <div className="flex items-center justify-center w-full">
-            <Image
-              src="/title_gallery.png"
-              alt="Gallery"
-              width={133}
-              height={90}
-              style={{ width: 'auto', height: 'auto' }}
-            />
-          </div>
+        <section className="flex flex-col items-center gap-8 pb-16 px-8 bg-white">
+          <Image
+            src="/title_gallery.png"
+            alt="Gallery"
+            width={133}
+            height={90}
+            style={{ width: 'auto', height: 'auto' }}
+          />
           <Gallery images={GALLERY_IMAGES} />
         </section>
 
         {/* RSVP — #E9E9E9 bg */}
-        <section className="bg-surface py-11">
-          <div className="px-10">
-            <h2 className="text-center text-heading">참석 의사 전달</h2>
-            <p className="mt-5 text-center text-body">
-              축하의 마음으로 참석해 주실 모든 분을{`\n`}
-              정중히 모시고자 하오니,{`\n`}
-              참석 여부를 알려주시면 감사하겠습니다.
-            </p>
-          </div>
+        <section className="flex flex-col gap-y-4 bg-surface py-11 px-8">
+          <h2 className="text-center text-heading">참석 의사 전달</h2>
+          <p className="text-center text-body pb-2">
+            축하의 마음으로 참석해 주실 모든 분을{`\n`}
+            정중히 모시고자 하오니,{`\n`}
+            참석 여부를 알려주시면 감사하겠습니다.
+          </p>
           <RsvpForm enabled={enabled} />
         </section>
 
         {/* Date */}
-        <section className="py-10">
-          <div className="px-10">
-            <h2 className="text-center text-heading">결혼식 일시</h2>
-          </div>
-          <div className="mt-8 flex flex-col items-center gap-8">
-            <p className="text-center text-body-loose">
-              2026년 9월 5일 토요일 오후 5시 30분{`\n`}
-              메종디탈리 (Maison d&apos;Italie)
-            </p>
-            <p className="text-center text-body-spaced">
-              밝은 차림으로 그날의 저녁을 빛내주세요.
-            </p>
-          </div>
-          <div className="mt-9">
-            <WeddingCalendar targetDate={WEDDING_AT} />
-          </div>
+        <section className="bg-white py-10 px-8">
+          <h2 className="text-center text-heading">결혼식 일시</h2>
+
+          <p className="text-center text-body-loose pt-4">
+            2026년 9월 5일 토요일 오후 5시 30분{`\n`}
+            메종디탈리 (Maison d&apos;Italie)
+          </p>
+          <p className="text-center text-body-spaced pt-4 pb-6">
+            밝은 차림으로 그날의 저녁을 빛내주세요.
+          </p>
+          <WeddingCalendar targetDate={WEDDING_AT} />
         </section>
 
         {/* Directions */}
-        <section className="py-4 pb-12">
-          <div className="px-10">
-            <h2 className="text-center text-heading">오시는 길</h2>
-            <p className="mt-5 text-center text-body">
-              메종 디탈리{`\n`}경기도 성남시 수정구 시흥동 63-5
+        <section className="py-6 pb-12 px-8 bg-white">
+          <h2 className="text-center text-heading">오시는 길</h2>
+          <p className="text-center text-body my-4">
+            메종 디탈리{`\n`}경기도 성남시 수정구 시흥동 63-5
+          </p>
+          <Map
+            lat={PLACE_LAT}
+            lng={PLACE_LNG}
+            placeName={PLACE_NAME}
+            nmapPlaceId={NMAP_PLACE_ID}
+            kmapPlaceId={KMAP_PLACE_ID}
+          />
+        </section>
+
+        {/* Detail sections */}
+        <section className="pt-4 pb-14 px-8 bg-white text-center flex flex-col gap-y-6">
+          <div>
+            <h3 className="text-label">주소</h3>
+            <p className="text-body">
+              메종디탈리{`\n`}경기 성남시 수정구 설개로 39{`\n`}T. 02-579-6166 /
+              02-579-6165
             </p>
           </div>
-          <div className="mt-3.5">
-            <Map
-              lat={PLACE_LAT}
-              lng={PLACE_LNG}
-              placeName={PLACE_NAME}
-              nmapPlaceId={NMAP_PLACE_ID}
-              kmapPlaceId={KMAP_PLACE_ID}
-            />
+          <div>
+            <h3 className="text-label">셔틀</h3>
+            <div className="flex flex-col gap-1.5">
+              <p className="text-body">
+                수서역 6번 출구에서{`\n`}
+                메종디탈리 요원의 안내에 따라 7m 직진하면{`\n`}
+                셔틀을 이용하실 수 있습니다.
+              </p>
+              <p className="text-body">
+                <span className="font-semibold">
+                  예식 시간 기준 1시간 전부터 총 4시간 운행됩니다.
+                </span>
+                {`\n`}( 운행시간 16:30~20:30 )
+              </p>
+            </div>
           </div>
-          {/* Detail sections */}
-          <div className="mt-4 flex flex-col">
-            <div className="py-3.5">
-              <h3 className="text-label">주소</h3>
-              <p className="text-body">
-                메종디탈리{`\n`}경기 성남시 수정구 설개로 39{`\n`}T. 02-579-6166
-                / 02-579-6165
-              </p>
-            </div>
-            <div className="py-3.5">
-              <h3 className="text-label">셔틀</h3>
-              <div className="flex flex-col gap-1.5">
-                <p className="text-body">
-                  수서역 6번 출구에서{`\n`}
-                  메종디탈리 요원의 안내에 따라 7m 직진하면{`\n`}
-                  셔틀을 이용하실 수 있습니다.
-                </p>
-                <p className="text-body">
-                  <span className="font-semibold">
-                    예식 시간 기준 1시간 전부터 총 4시간 운행됩니다.
-                  </span>
-                  {`\n`}( 운행시간 16:30~20:30 )
-                </p>
-              </div>
-            </div>
-            <div className="py-3.5">
-              <h3 className="text-label">버스</h3>
-              <p className="text-body">
-                성남농협영농종합지원센터 하차 도보5분 거리{`\n`}
-                (노선 9800 / 9400 / 9408)
-              </p>
-            </div>
-            <div className="py-3.5">
-              <h3 className="text-label">주차</h3>
-              <p className="text-body">
-                메종디탈리 주차장을 이용하실 수 있습니다.{`\n`}
-                주차 자리가 협소하여{`\n`}
-                대중교통과 셔틀 이용을 권장드립니다.
-              </p>
-            </div>
-            <div className="py-3.5">
-              <h3 className="text-label">드레스 코드</h3>
-              <p className="text-body">
-                밝은 차림으로 그날의 저녁을 빛내주세요.
-              </p>
-            </div>
+          <div>
+            <h3 className="text-label">버스</h3>
+            <p className="text-body">
+              성남농협영농종합지원센터 하차 도보5분 거리{`\n`}
+              (노선 9800 / 9400 / 9408)
+            </p>
+          </div>
+          <div>
+            <h3 className="text-label">주차</h3>
+            <p className="text-body">
+              메종디탈리 주차장을 이용하실 수 있습니다.{`\n`}
+              주차 자리가 협소하여{`\n`}
+              대중교통과 셔틀 이용을 권장드립니다.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-label">드레스 코드</h3>
+            <p className="text-body">밝은 차림으로 그날의 저녁을 빛내주세요.</p>
           </div>
         </section>
 
         {/* Gift — #E9E9E9 bg */}
-        <section className="bg-surface py-11">
-          <div className="flex flex-col gap-4 w-full">
+        <section className="bg-surface py-11 px-8">
+          <div className="flex flex-col gap-4">
             <h2 className="text-center text-heading">마음 전하기</h2>
             <p className="text-center text-body">
               축하 마음을 전하고 싶으신 분들은{`\n`}
@@ -258,7 +242,7 @@ export default async function Home() {
         </section>
 
         {/* Share */}
-        <section className="py-9">
+        <section className="py-9 px-8 bg-white">
           <KakaoShare
             siteUrl={SITE_URL}
             address={PLACE_ADDRESS}
