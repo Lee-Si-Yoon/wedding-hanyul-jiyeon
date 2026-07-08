@@ -123,7 +123,6 @@ export default async function Home() {
             alt="Gallery"
             width={133}
             height={90}
-            style={{ width: 'auto', height: 'auto' }}
           />
           <Gallery images={GALLERY_IMAGES} />
         </section>
