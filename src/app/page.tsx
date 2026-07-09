@@ -7,6 +7,7 @@ import BankAccounts, {
 import KakaoShare from '@/components/kakao-share/kakao-share';
 import Map from '@/components/map/map';
 import WeddingCalendar from '@/components/calendar/calendar';
+import AudioPlayer from '@/components/audio-player/audio-player';
 import Image from 'next/image';
 
 const GALLERY_IMAGES = Array.from(
@@ -71,6 +72,7 @@ export default async function Home() {
 
   return (
     <main className="flex-1 w-full text-foreground font-sans">
+      <AudioPlayer />
       <div className="mx-auto w-full max-w-94">
         {/* Hero */}
         <div className="relative w-full h-124">
