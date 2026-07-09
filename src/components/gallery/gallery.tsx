@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/carousel';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
+import { XIcon } from 'lucide-react';
 
 export default function Gallery({ images }: { images: string[] }) {
   const [api, setApi] = useState<CarouselApi>();
@@ -90,8 +91,9 @@ export default function Gallery({ images }: { images: string[] }) {
       </Button>
 
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent className="max-w-2xl max-h-[85dvh]">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-2 overflow-y-auto">
+        <DialogContent className="max-w-2xl max-h-[85dvh] flex flex-col overflow-hidden">
+          <DialogTitle>사진 전체보기</DialogTitle>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-2 overflow-y-auto min-h-0 [-webkit-overflow-scrolling:touch]">
             {images.map((src, i) => (
               <div
                 key={src}
@@ -116,14 +118,20 @@ export default function Gallery({ images }: { images: string[] }) {
           className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center cursor-pointer"
           onClick={() => setFullscreenIndex(null)}
         >
+          <button
+            className="absolute top-4 right-4 z-10 flex size-10 items-center justify-center rounded-full bg-white/80 text-foreground"
+            onClick={() => setFullscreenIndex(null)}
+            aria-label="닫기"
+          >
+            <XIcon className="size-5" />
+          </button>
           <div className="relative w-full h-full">
             <Image
               src={images[fullscreenIndex]}
               alt={`사진 ${fullscreenIndex + 1}`}
               fill
               sizes="100vw"
-              className="object-contain cursor-pointer"
-              onClick={() => setFullscreenIndex(null)}
+              className="object-contain"
             />
           </div>
         </div>
