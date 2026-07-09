@@ -96,22 +96,22 @@ export default async function Home() {
             style={{ width: 'auto', height: 'auto' }}
             priority
           />
-          <div className="flex flex-col items-center gap-14">
-            <p className="text-center text-body-spaced font-medium mt-3 trim-both">
+          <div className="w-full flex flex-col items-center gap-14">
+            <p className="w-full text-center text-body-spaced font-medium mt-3 trim-both">
               종이 냄새를 좋아하는 공학도와{`\n`}
               물감 냄새를 좋아하는 미술학도가 만나,{`\n`}한 폭의 그림을 그려
               나가려 합니다.{`\n`}
               색이 채워지는 순간을 함께해 주세요.
             </p>
-            <div className="flex flex-col items-center gap-3">
-              <div className="flex items-center justify-center gap-2.5">
+            <div className="w-full flex flex-col items-center gap-3">
+              <div className="w-full flex items-center justify-center gap-2.5">
                 <span className="text-name leading-[140%]">
                   이경복 손재희 의
                 </span>
                 <span className="text-body leading-[140%]">장남</span>
                 <span className="text-name leading-[140%]">이한율</span>
               </div>
-              <div className="flex items-center justify-center gap-2.5">
+              <div className="w-full flex items-center justify-center gap-2.5">
                 <span className="text-name leading-[140%]">
                   김수헌 김종옥 의
                 </span>
